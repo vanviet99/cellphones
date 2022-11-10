@@ -158,9 +158,6 @@ function Header() {
             <Modal className='modal' title="ĐĂNG NHẬP TÀI KHOẢN SMEMBER" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 
             </Modal>
-
-
-
             <div className='Header__nav'>
                 <a href='/home' className='Header__logo'>
                     <img className='Header__img' src="https://brademar.com/wp-content/uploads/2022/10/CellphoneS-Logo-PNG-1.png" alt="" />
