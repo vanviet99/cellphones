@@ -97,20 +97,18 @@
     transform: translateX(-30px);
     transform: translateY(3px);
     transform: translate(-30px, 5px);
-
 }
 
 
-.form__header {
+.form__header  {
     transform: translateX(-50px);
 
 }
 
-.dangnhap123 {}
+.Header__address,.Header__phone,.Header__address_1{
+    border: none !important; 
+}
 
-.QMK {}
-
-.DANGNHAP {}
 
 .tt123 {
     background-color: #d70018 !important;
@@ -121,4 +119,46 @@
 .ant-modal-footer button {
     display: none;
 
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+
+
+}
+.address ul li{
+    list-style: none;
+    padding: 10px 0;
+    
+
+}
+.modal-header{
+    background-color: #d70018;
+}
+.abc{
+    padding-left: 100px;
+    /* position: absolute; */
+    left: 50px; 
+}
+.abc input{
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(148, 144, 144);
+}
+.name {
+    position: relative;
+    left: 25px ;
+    color: black;
+}
+
+.btn-close{
+    background-color: aliceblue;
+    color: aliceblue;
+}
+
+.DKN{
+    border: none;
+    background-color: aliceblue;
 }
