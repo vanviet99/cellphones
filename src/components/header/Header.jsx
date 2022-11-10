@@ -56,18 +56,119 @@ function Header() {
     };
     return (
         <div className='Header'>
+
+            {/* <!-- Button trigger modal --> */}
+
+
+            {/* <!-- Modal1 --> */}
+            <div  className="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div  className="modal-header">
+                         
+                         <div className='abc'>
+                         <i  class="fa-solid fa-magnifying-glass name "></i>  <input   type="text"  placeholder='Nhập tên tỉnh thành'  /> 
+                         </div>
+                        
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className='address'>
+                                <ul >
+                                    <li><p>Hà Nội</p></li>
+                                    <li>Hồ Chí Minh</li>
+                                    <li>Bắc Ninh</li>
+                                    <li>Cao bằng</li>
+                                    <li>Phú Thọ</li>
+                                    <li>Nam Định</li>
+                                    <li>Hà Nam</li>
+                                </ul>
+                                <ul>
+                                <li><p>Hà Nội</p></li>
+                                    <li>Hồ Chí Minh</li>
+                                    <li>Bắc Ninh</li>
+                                    <li>Cao bằng</li>
+                                    <li>Phú Thọ</li>
+                                    <li>Nam Định</li>
+                                    <li>Hà Nam</li>
+                                </ul>
+                                <ul >
+                                    <li><p>Hà Nội</p></li>
+                                    <li>Hồ Chí Minh</li>
+                                    <li>Bắc Ninh</li>
+                                    <li>Cao bằng</li>
+                                    <li>Phú Thọ</li>
+                                    <li>Nam Định</li>
+                                    <li>Hà Nam</li>
+                                </ul>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* <!-- Modal2 --> */}
+            <div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* <!-- Modal3 --> */}
+
+            {/* <div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+
+
             <Modal className='modal' title="ĐĂNG NHẬP TÀI KHOẢN SMEMBER" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+
             </Modal>
             <div className='Header__nav'>
                 <a href='/home' className='Header__logo'>
                     <img className='Header__img' src="https://brademar.com/wp-content/uploads/2022/10/CellphoneS-Logo-PNG-1.png" alt="" />
                 </a>
 
-                <a className='Header__address '>
+
+                <button className='Header__address ' data-bs-toggle="modal" data-bs-target="#exampleModal_1">
                     <div className='phone__icon' >
                         <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='phone__content' > Gọi để mua hàng ....</div>
-                </a>
+                    <div className='phone__content' > Xem giá mua tại </div>
+                </button>
 
 
                 <a className='Header__search'>
@@ -75,18 +176,20 @@ function Header() {
                         <input className='input_1' type="text" placeholder='Bạn cần tìm ....' />
                     </div>
                 </a>
-                <a className='Header__phone'>
+
+
+                <button className='Header__phone' data-bs-toggle="modal" data-bs-target="#exampleModal_2">
                     <div className='phone__icon' >
                         <PhoneOutlined />
                     </div>
                     <div className='phone__content' > Gọi để mua hàng ....</div>
-                </a>
+                </button>
 
-                <a className='Header__address_1'>
+                <button className='Header__address_1' data-bs-toggle="modal" data-bs-target="#exampleModal_3">
                     <div className='address__icon' >
                         <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='address__content' > Cửa hàng gần bạn nhất </div>
-                </a>
+                    <div className='address__content' >  <a style={{color:"aliceblue"}} href="https://cellphones.com.vn/dia-chi-cua-hang">Cửa hàng gần bạn nhất</a> </div>
+                </button>
 
 
                 <a className='Header__cart' onClick={function () {
@@ -171,7 +274,7 @@ function Header() {
 
                                     <div className='Đangkyngay_2'>
 
-                                        <p style={{ color: "black", padding: "20px", right: '10px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
+                                        <p style={{ color: "black", padding: "20px", right: '10px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
                                     </div>
                                 </Form>
                             </div>

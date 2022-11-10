@@ -15,11 +15,9 @@ function Home() {
   window.onscroll = function() {myFunction()};
 
   function myFunction() {
-    if (document.documentElement.scrollTop > 500) {
-      console.log(123123123);
+    if (document.documentElement.scrollTop > 1200) {
       document.getElementById("back-to-top").className = "showbtn__back__to__top";
     } else {
-      console.log(88890890890);
       document.getElementById("back-to-top").className = "hidebtn__back__to__top";
     }
   }

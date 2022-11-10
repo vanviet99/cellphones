@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './HomeContent.css'
 import HomeContentSlider from './HomeContentSlider'
 
@@ -29,22 +30,27 @@ function HomeContent() {
 
     return (
         <div className="home__content__block">
-        <HomeContentSlider></HomeContentSlider>
+            <HomeContentSlider></HomeContentSlider>
             <div className="home__content__list2">
+                <div className="home__content__list2__btnall"> 
+                <Link to={'/allproduct'}><button> <i class="fa-solid fa-flask-vial"></i> Lọc sản phẩm</button></Link>
+                <Link to={'/allproduct'}><button>Xem tất cả</button></Link></div>
                 <div className="home__content__list2__cart">
                     {dataProduct.filter((value, index) => index < showmore).map(value => {
                         let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
                         return (
-                            <div key={value._id} className="home__content__list__cart">
-                                <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
-                                <h3>{value.productName}</h3>
-                                <p className='home__content__list__cart__price'>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
-                                <div className="home__content__list__cart__sale">
-                                    Nhập mã CPSONL500 khi thanh toán VNPAY qua website hoặc CPS500 qua QR Offline tại cửa hàng để giảm thêm 500k khi mua sản phẩm Apple từ 17 triệu và
+                            <Link to={`/ProductDetail/${value.productName}`}>
+                                <div key={value._id} className="home__content__list__cart">
+                                    <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
+                                    <h3>{value.productName}</h3>
+                                    <p className='home__content__list__cart__price'>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
+                                    <div className="home__content__list__cart__sale">
+                                        Nhập mã CPSONL500 khi thanh toán VNPAY qua website hoặc CPS500 qua QR Offline tại cửa hàng để giảm thêm 500k khi mua sản phẩm Apple từ 17 triệu và
+                                    </div>
+                                    <div className='home__content__list__cart__star'> <i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i></div>
+                                    <div className='home__content__list__cart__Fav'><p>Yêu thích </p><i className="fa-regular fa-heart"></i></div>
                                 </div>
-                                <div className='home__content__list__cart__star'> <i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i></div>
-                                <div className='home__content__list__cart__Fav'><p>Yêu thích </p><i className="fa-regular fa-heart"></i></div>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>
