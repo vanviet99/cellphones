@@ -208,3 +208,6 @@
     color: #444;
     margin-left: 10px;
 }
+.home__content__list__cart__Fav i:hover{
+color: pink;
+}
