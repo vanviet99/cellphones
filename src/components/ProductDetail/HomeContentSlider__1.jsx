@@ -13,7 +13,7 @@ function HomeContentSlider__1() {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then(value => {
+        }).then(value => { 
             setDataProduct(value.data.products)
         })
             .catch(value => {
