@@ -5,7 +5,7 @@ import CardProduct from './layout/CardProduct';
 import Home from './layout/Home';
 import SignUp from './layout/SignUp';
 import Payment__layout from './layout/Payment__layout';
-import Banner from './components/Banner/Banner';
+import Banner from './components/SSS/Banner';
 import GetAllProduct from './layout/GetAllProduct';
 
 function App() {
