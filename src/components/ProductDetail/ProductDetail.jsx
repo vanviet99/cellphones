@@ -38,7 +38,7 @@ function ProductDetail() {
                 )
             })} */}
 
-           <div id='title'>
+            <div id='title'>
                 <h2>iPhone 13 Pro Max 1TB I Chính hãng VN/A </h2><i class="fa-solid fa-star yellow" >
                 </i> <i class="fa-solid fa-star yellow" ></i> <i class="fa-solid fa-star yellow" >
                 </i> <i class="fa-solid fa-star yellow" ></i>
@@ -213,98 +213,85 @@ function ProductDetail() {
 
             </div>
             <div>
-                <HomeContentSlider__1/>
-            </div>
-            <div id='detail1'>
                 <div className='detail1-box'>
-                    <button>PHỤ KIỆN MUA CÙNG</button>
-                    <button>SẢN PHẨM TƯƠNG TỰ</button>
-                    <button>THAM KHẢO THÊM HÀNG CŨ</button>
+                    <button><b>PHỤ KIỆN MUA CÙNG </b></button>
+                    <button><b>SẢN PHẨM TƯƠNG TỰ </b></button>
+                    <button><b>THAM KHẢO THÊM HÀNG CŨ </b></button>
                 </div>
                 <div className='detail1-box1'>
-                    <div className="detail1-box1-item1">
-                        <h4>ĐẶC ĐIỂM NỔI BẬT</h4>
-                        <ul>
-                            <li>Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết
-                                kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display</li>
-                            <li>Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic</li>
-                            <li>Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động</li>
-                            <li>Pin liền lithium-ion kết hợp cùng công nghệ sạc nhanh cải tiến</li>
-                        </ul>
-                        <p>
+                    <HomeContentSlider__1 />
+                </div>
+            </div>
+
+            <div className='detail1-box1'>
+                <div className="detail1-box1-item1">
+                    <h4>ĐẶC ĐIỂM NỔI BẬT</h4>
+                    <ul>
+                        <li>Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết
+                            kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display</li>
+                        <li>Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic</li>
+                        <li>Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động</li>
+                        <li>Pin liền lithium-ion kết hợp cùng công nghệ sạc nhanh cải tiến</li>
+                        <li>
+                            Kích thước màn hình iPhone 14 Pro Max vẫn là 6.1 inch tuy nhiên phần “tai thỏ” đã được
+                            thay thế bằng một đường cắt hình viên thuốc. Apple gọi đây là Dynamic Island - nơi chứa
+                            camera Face ID và một đường cắt hình tròn thứ hai cho camera trước.</li>
+                        <li>
+                            Ngoài ra, iPhone 14 Pro Max có tính năng màn hình luôn bật hoạt động (Always-on Display)
+                            với tiện ích màn hình khóa mới trên iOS 16. Người dùng có thể xem các thông tin như lời
+                            nhắc, sự kiện lịch và thời tiết mà không cần bật máy lên để xem. Thậm chí, có một trạng
+                            thái ngủ cho hình nền, trạng thái này sẽ làm tối hình nền để sử dụng ít pin hơn</li>
+                        <li>
                             iPhone 14 Pro Max có sự cải thiện lớn màn hình so với iPhone 13 Pro Max. Sự khác biệt
                             giữ phiên bản iPhone 14 Pro Max 256GB và bản tiêu chuẩn 128GB chỉ là bộ nhớ trong. Dưới
                             đây là một số cải tiến nổi bật trên iPhone 14 Pro Max mà có thể bạn chưa biết!
-                        </p>
-                        <ul>
-                            Mời bạn tìm hiểu thêm về phiên bản iPhone 14 Pro Max 128GB với nhiều chương trình khuyến
-                            mãi tại CellPhoneS!
-                            <li>
-                                Kích thước màn hình iPhone 14 Pro Max vẫn là 6.1 inch tuy nhiên phần “tai thỏ” đã được
-                                thay thế bằng một đường cắt hình viên thuốc. Apple gọi đây là Dynamic Island - nơi chứa
-                                camera Face ID và một đường cắt hình tròn thứ hai cho camera trước.</li>
-                            <li>
-                                Ngoài ra, iPhone 14 Pro Max có tính năng màn hình luôn bật hoạt động (Always-on Display)
-                                với tiện ích màn hình khóa mới trên iOS 16. Người dùng có thể xem các thông tin như lời
-                                nhắc, sự kiện lịch và thời tiết mà không cần bật máy lên để xem. Thậm chí, có một trạng
-                                thái ngủ cho hình nền, trạng thái này sẽ làm tối hình nền để sử dụng ít pin hơn</li>
+                        </li>
+                    </ul>
+                </div>
+                <div className="detail1-box1-item2">
+                    <h4>Thông số kỹ thuật</h4>
+                    <ul>
+                        <li>
+                            <p>Kích thước màn hình</p>
+                            <span>6.7 inches</span>
+                        </li>
+                        <li>
+                            <p>Độ phân giải màn hình</p>
+                            <span>2796 x 1290-pixel</span>
+                        </li>
+                        <li>
+                            <p>Hệ điều hành</p>
+                            <span>iOS 16</span>
+                        </li>
+                        <li>
+                            <p>Công nghệ màn hình</p>
+                            <span>Super Retina XDR OLED</span>
+                        </li>
+                        <li>
+                            <p>Camera sau</p>
+                            <span>
+                                Camera chính: 48 MP, f/1.8, 24mm, OIS
+                                Camera góc siêu rộng: 12 MP, f/2.2, 13mm, 120˚
+                            </span>
+                        </li>
+                        <li>
+                            <p>Camera trước</p>
+                            <span>Camera selfie: 12 MP, f/1.9, 23mm, PDAF</span>
+                        </li>
+                        <li>
+                            <p>Chipset</p>
+                            <span>Apple A16 Bionic 6 nhân</span>
+                        </li>
+                        <li>
+                            <p>Bộ nhớ trong</p>
+                            <span>256 GB</span>
+                        </li>
+                        <li>
+                            <p>Thẻ SIM</p>
+                            <span>2 SIM (nano-SIM và eSIM)</span>
 
-                        </ul>
-                    </div>
-                    <div className="detail1-box1-item2">
-                        <h4>Thông số kỹ thuật</h4>
-                        <ul>
-                            <li>
-                                <p>Kích thước màn hình</p>
-                                <span>6.7 inches</span>
-                            </li>
-                            <li>
-                                <p>Độ phân giải màn hình</p>
-                                <span>2796 x 1290-pixel</span>
-                            </li>
-                            <li>
-                                <p>Hệ điều hành</p>
-                                <span>iOS 16</span>
-                            </li>
-                            <li>
-                                <p>Công nghệ màn hình</p>
-                                <span>Super Retina XDR OLED</span>
-                            </li>
-                            <li>
-                                <p>Camera sau</p>
-                                <span>
-                                    Camera chính: 48 MP, f/1.8, 24mm, OIS
-                                    Camera góc siêu rộng: 12 MP, f/2.2, 13mm, 120˚
-                                    Camera tele: 12 MP, f/2.8, 77mm, OIS, 3x optical zoom
-                                    Cảm biến độ sâu TOF 3D LiDAR
-                                </span>
-                            </li>
-                            <li>
-                                <p>Camera trước</p>
-                                <span>Camera selfie: 12 MP, f/1.9, 23mm, PDAF</span>
-                            </li>
-                            <li>
-                                <p>Chipset</p>
-                                <span>Apple A16 Bionic 6 nhân</span>
-                            </li>
-                            <li>
-                                <p>Bộ nhớ trong</p>
-                                <span>256 GB</span>
-                            </li>
-                            <li>
-                                <p>Thẻ SIM</p>
-                                <span>2 SIM (nano-SIM và eSIM)</span>
-
-                            </li>
-                            <li>
-                                <p>Tính năng màn hình</p>
-                                <span>
-                                    120Hz, Always-On display, HDR, True Tone,
-                                    Haptic Touch, 2,000,000:1, 2000 nits
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
