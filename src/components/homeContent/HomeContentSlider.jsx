@@ -79,7 +79,7 @@ function HomeContentSlider() {
                         {dataProduct.reverse().map(value => {
                             let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
                             return (
-                                <Link to={`/ProductDetail/${value.productName}`}>
+                                <Link to={`/ProductDetail/${value._id}`}>
                                     <div key={value._id} className="home__content__list__cart">
                                         <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
                                         <h3>{value.productName}</h3>

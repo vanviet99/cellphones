@@ -1,10 +1,5 @@
 import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-// import Cart from './components/cart/Cart';
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import DataProductDetail from './layout/dataProductDetail'
 import CardProduct from './layout/CardProduct';
 import Home from './layout/Home';
