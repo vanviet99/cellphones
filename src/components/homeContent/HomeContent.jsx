@@ -21,13 +21,9 @@ function HomeContent() {
                 console.log(value);
             })
     }, [])
-
-
     const handleShowMore = () => {
         setShowmore(count => count + 10)
     }
-
-
     return (
         <div className="home__content__block">
             <HomeContentSlider></HomeContentSlider>

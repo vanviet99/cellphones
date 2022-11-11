@@ -53,7 +53,7 @@ function HomeContentSlider() {
     }, [])
     return (
         <div>
-            <div className='home__content'>
+            <div className='home__content'> 
                 <div className='home__content__list' >
                     <div className="home__content__list__top">
                         {dataProduct.map(value => {
