@@ -11,17 +11,6 @@ import GetAllProduct from './layout/GetAllProduct';
 function App() {
   return (
     <BrowserRouter>
-<<<<<<< HEAD
-      <Routes>
-        <Route path='ProductDetail' element={< DataProductDetail />}></Route>
-        <Route path='card' element={<CardProduct></CardProduct>}></Route>
-        <Route path='' element={<Home></Home>}></Route>
-        <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        <Route path='/payment-info' element={<Payment__layout></Payment__layout>}></Route>
-        <Route path='/sss' element={<SSS></SSS>}></Route>
-      </Routes>
-=======
         <Routes>
           <Route path='ProductDetail/:nameProductDetail' element={< DataProductDetail/>}></Route>
           <Route path='card' element={<CardProduct></CardProduct>}></Route>
@@ -32,7 +21,6 @@ function App() {
           <Route path='/payment-info' element={<Payment__layout></Payment__layout>}></Route>
           <Route path='/sss' element={<SSS></SSS>}></Route>
         </Routes>
->>>>>>> c820b82572ff3bef4fb4f939e10f6c9abc7c2f40
     </BrowserRouter>
   );
 }

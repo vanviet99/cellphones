@@ -285,24 +285,27 @@
     padding: 7px;
 }
 
-/* .detail1-box1 {
-    display: flex;
-} */
+
 .detail1-box1 {
     display: flex;
-    padding: 10px 0px ;
+    /* padding: 10px 0px; */
 }
+
 .detail1-box1-item2 {
     width: 100%;
     padding: 0 10px;
 }
+
 .detail1-box1-item2 ul li {
     display: flex;
     justify-content: space-between;
-    /* text-align: left; */
-    padding: 5px 5px ;
-    margin-left:10px ;
+    padding: 5px 5px;
+    margin-left: 10px;
 }
-.detail1-box1-item2 ul li span{
+
+.detail1-box1-item2 ul li span {
     margin-left: 20px;
+}
+.detail1-box1-Homecontent{
+    transform: translateY(-100px);
 }
