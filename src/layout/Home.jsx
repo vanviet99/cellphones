@@ -10,13 +10,24 @@ function Home() {
   const top = () => {
     window.scrollTo(0,0)
   }
+  console.log(document.body.offsetHeight);
+
+  window.onscroll = function() {myFunction()};
+
+  function myFunction() {
+    if (document.documentElement.scrollTop > 1200) {
+      document.getElementById("back-to-top").className = "showbtn__back__to__top";
+    } else {
+      document.getElementById("back-to-top").className = "hidebtn__back__to__top";
+    }
+  }
   return (
     <div className='App'>
       <Header></Header>
       <div className="component__banner"><Banner></Banner></div>
      <div className="components__homecontent"> <HomeContent></HomeContent></div>
      <div className="components_footer"> <Footer></Footer></div>
-    <button onClick={top} className='back-to-top'><i class="fa-solid fa-chevron-up"></i></button> 
+    <button onClick={top} id='back-to-top'><i class="fa-solid fa-chevron-up"></i></button> 
     </div>
 
   )

@@ -43,7 +43,7 @@ function HomeContentSlider__1() {
             } else{
                 clearInterval(A)
             }
-        },3000)
+        },2000)
         return ()=>{
             clearInterval(A)
         }
