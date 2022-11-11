@@ -4,7 +4,10 @@
     box-sizing: border-box;
 }
 
-
+/* .GetAllProduct{
+    max-width: 1200px;
+    margin: 0 auto;
+} */
 .GetAllProduct__content{
     max-width: 1200px;
     margin: 0 auto;
@@ -86,13 +89,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.slide{
-    width: 800px;
-}
-.GetAllProduct__content__img{
-    width: 100vw;
-    border: 5px;
 }
 .GetAllProduct__content__img img{
     width: 100%;

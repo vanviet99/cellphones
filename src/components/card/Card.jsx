@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import './Card.css'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Empty, Button, notification } from 'antd';
 import { LeftOutlined , CloseOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css';
 
 function Card() {
+    let id = useParams()
+    let backbtn = id.nameProductDetail ? id.nameProductDetail :''
+    
     let data = window.localStorage.getItem('total-cart-amount')
     let cloneCount = 1
     window.localStorage.getItem('count') ? cloneCount = window.localStorage.getItem('count') : window.localStorage.setItem('count', 1)
@@ -52,7 +55,7 @@ function Card() {
                 {!data ?
                     <div className='Cart__content__lists'>
                         <div className="Cart__content__lists__back">
-                            <h3>Giỏ hàng <div className="backs"><Link to={'/'}><p> <LeftOutlined />Trở về</p></Link></div></h3>
+                            <h3>Giỏ hàng <div className="backs"><Link to={`/${backbtn}`}><p> <LeftOutlined />Trở về</p></Link></div></h3>
                         </div>
                         {/* {data.map(value=>{
                             return( */}
