@@ -92,32 +92,32 @@ function Banner() {
 //    }
 //    img[index-1].setAttribute('style','display:block')
 // }, 3000);
-const handleChangeCart = (e) => {
-  const widthItem = document.querySelector('.home__content__list__cart').offsetWidth + 12;
+const handleChangeCart1 = (e) => {
+  const widthItem = document.querySelector('.slider__img').offsetWidth + 12;
   console.log(widthItem)
   console.log(e.target);
   if (e.target.id == 'pev') {
-      document.querySelector('.home__content__list').scrollLeft -= widthItem
+      document.querySelector('.anhbiet').scrollLeft -= widthItem
   } else {
-      document.querySelector('.home__content__list').scrollLeft += widthItem
+      document.querySelector('.anhbiet').scrollLeft += widthItem
   }
 }
 
 let count  = 0
 let check  = 0
-var A 
+var B
 useEffect(function(){
-   A = setInterval(function(){
-      count = document.querySelector('.home__content__list__cart').offsetWidth 
+   B = setInterval(function(){
+      count = document.querySelector('.slider__img').offsetWidth 
       if(check < (240 * (window.localStorage.getItem('length') - 5 ))){
-          check += document.querySelector('.home__content__list__cart').offsetWidth 
-          document.querySelector('.home__content__list').scrollLeft += count
+          check += document.querySelector('.slider__img').offsetWidth 
+          document.querySelector('.anhbiet').scrollLeft += count
       } else{
-          clearInterval(A)
+          clearInterval(B)
       }
   },5000)
   return ()=>{
-      clearInterval(A)
+      clearInterval(B)
   }
 },[])
   return (
@@ -212,13 +212,13 @@ useEffect(function(){
                            </Col> : null} */}
                               <Col span={14}>
         <div className='home__content slider'>
-                <div className='home__content__list' >
+                <div className='anhbiet' >
                     <div className="home__content__list__top">
                         {banner.map(value => {
                             return (
                                 
                                 <div className='bbb'>
-                                  <div key={value._id} className="home__content__list__cart slider__img">
+                                  <div key={value._id} className=" slider__img">
                                     <div className="home__content__list__cart__img slider__img-src"><img src={value.thumb} alt="" />
                                     </div> 
                                 </div>
@@ -240,8 +240,8 @@ useEffect(function(){
 
                     </div>
                 </div>
-                <button className="home__content__list__button __content__list__button__left slider__left" onClick={handleChangeCart}><i id='pev' className="fa-solid fa-chevron-left"></i></button>
-                <button className="home__content__list__button __content__list__button__right slider__right" onClick={handleChangeCart}><i id='next' className="fa-solid fa-chevron-right"></i></button>
+                <button className="home__content__list__button __content__list__button__left slider__left" onClick={handleChangeCart1}><i id='pev' className="fa-solid fa-chevron-left"></i></button>
+                <button className="home__content__list__button __content__list__button__right slider__right" onClick={handleChangeCart1}><i id='next' className="fa-solid fa-chevron-right"></i></button>
 
 
             </div>
