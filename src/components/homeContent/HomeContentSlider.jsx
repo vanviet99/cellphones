@@ -60,7 +60,7 @@ function HomeContentSlider() {
                             let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
                             return (
                                 <Link to={`/ProductDetail/${value._id}`}>
-                                    <div key={value._id} className="home__content__list__cart">
+                                    <div key={value._id} className="home__content__list__cart test">
                                         <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
                                         <h3>{value.productName}</h3>
                                         <p className='home__content__list__cart__price'>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
@@ -75,12 +75,12 @@ function HomeContentSlider() {
                         })}
 
                     </div>
-                    <div className="home__content__list__bottom">
+                    <div className="home__content__list__bottom hide1">
                         {dataProduct.reverse().map(value => {
                             let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
                             return (
                                 <Link to={`/ProductDetail/${value._id}`}>
-                                    <div key={value._id} className="home__content__list__cart">
+                                    <div key={value._id} className="home__content__list__cart test">
                                         <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
                                         <h3>{value.productName}</h3>
                                         <p className='home__content__list__cart__price'>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
