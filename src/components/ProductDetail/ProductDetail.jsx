@@ -1,6 +1,6 @@
 import React from 'react'
 import './ProductDetail.css'
-import { StarOutlined, HeartOutlined, GiftOutlined, PhoneOutlined } from '@ant-design/icons';
+import { PhoneOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import HomeContentSlider__1 from './HomeContentSlider__1';
@@ -12,15 +12,13 @@ function ProductDetail() {
     const [data, setData] = useState([])
 
     function pushData() {
-        console.log(12332198);
         let cloneOder = window.localStorage.getItem('oderData')
         if (cloneOder) {
             cloneOder = JSON.parse(cloneOder)
-                 let newCloneOder = [...cloneOder,data]        
-            localStorage.setItem('oderData',JSON.stringify(newCloneOder));
-
-        }else(
-            localStorage.setItem('oderData',JSON.stringify([data]))
+            let newCloneOder = [...cloneOder, data]
+            localStorage.setItem('oderData', JSON.stringify(newCloneOder));
+        } else (
+            localStorage.setItem('oderData', JSON.stringify([data]))
         )
 
     }
@@ -40,10 +38,16 @@ function ProductDetail() {
 
         <div style={{ margin: '30px' }}>
             <div id='title'>
-                <h2>{data.productName} </h2><i class="fa-solid fa-star yellow" >
-                </i> <i class="fa-solid fa-star yellow" ></i> <i class="fa-solid fa-star yellow" >
-                </i> <i class="fa-solid fa-star yellow" ></i>
-                <i class="fa-solid fa-star white" ></i> đánh giá
+                <h2>{data.productName}</h2>
+                <i className='start'>
+                    <i class="fa-solid fa-star yellow" > </i> &ensp;
+                    <i class="fa-solid fa-star yellow" ></i>&ensp;
+                    <i class="fa-solid fa-star yellow" ></i>&ensp;
+                    <i class="fa-solid fa-star yellow" ></i>&ensp;
+                    <i class="fa-solid fa-star white" ></i>&ensp;
+                    <b> đánh giá</b>
+                </i>
+
             </div>
 
             <div id='detail'>
@@ -51,7 +55,7 @@ function ProductDetail() {
                 <div className='detail-box1'>
 
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <HeartOutlined className='heart' /> yêu thích
+                        <i class="fa-solid fa-heart heart"></i> yêu thích
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src={img} class="d-block w-100" alt="..." />
@@ -110,11 +114,8 @@ function ProductDetail() {
 
                 <div className='detail-box2'>
                     <div className='detail-box2-item3' >
-                        {/* <button className="detail-box2-item3-progam" onClick={pushData} >
-                        <GiftOutlined /><b>Khuyếnmãi</b>
-                        </button> */}
                         <div className="detail-box2-item3-progam">
-                            <GiftOutlined /><b>Khuyến mãi</b>
+                            <i className="fa-solid fa-gift"></i><b>Khuyến mãi</b>
                         </div>
                         <span>
                             <p>
@@ -133,7 +134,11 @@ function ProductDetail() {
                     <div className='detail-box2-item4'>
                         <div className='detail-box2-item4-ant1'>
                             <button className='detail-box2-item4-ant1-button1'> <h5 style={{ color: 'white' }}>mua ngay</h5>(giao tận nơi hoặc lấy tại cửa hàng)</button>
-                            <button className='detail-box2-item4-ant1-button2' onClick={pushData}> <i class="fa-solid fa-cart-plus cart"></i><br /><span className='cart-tex'>thêm vào giỏ hàng</span> </button>
+                            <button className='detail-box2-item4-ant1-button2' onClick={pushData}>
+                                <img src="https://static-product.cellphones.com.vn/img/add-to-cart.97145ab.png" alt="" />
+                                <br />
+                                <span className='cart-tex'>thêm vào giỏ hàng </span>
+                            </button>
                         </div>
                         <div className='detail-box2-item4-ant2'>
                             <button>
@@ -282,27 +287,12 @@ function ProductDetail() {
                             <p>Camera trước</p>
                             <span>Camera selfie: 12 MP, f/1.9, 23mm, PDAF</span>
                         </li>
-                        {/* <li>
-                            <p>Chipset</p>
-                            <span>Apple A16 Bionic 6 nhân</span>
-                        </li>
-                        <li>
-                            <p>Bộ nhớ trong</p>
-                            <span>256 GB</span>
-                        </li>
-                        <li>
-                            <p>Thẻ SIM</p>
-                            <span>2 SIM (nano-SIM và eSIM)</span>
-
-                        </li> */}
                     </ul>
                 </div>
             </div>
         </div>
 
     )
-
-
 }
 
 export default ProductDetail
