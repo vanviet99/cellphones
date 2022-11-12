@@ -61,13 +61,13 @@ function Header() {
 
 
             {/* <!-- Modal1 --> */}
-            <div  className="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div  className="modal fade" id="exampleModal_1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div  className="modal-header">
                          
                          <div className='abc'>
-                         <i  class="fa-solid fa-magnifying-glass name "></i>  <input   type="text"  placeholder='Nhập tên tỉnh thành'  /> 
+                         <i  className="fa-solid fa-magnifying-glass name "></i>  <input   type="text"  placeholder='Nhập tên tỉnh thành'  /> 
                          </div>
                         
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
@@ -110,14 +110,14 @@ function Header() {
 
 
             {/* <!-- Modal2 --> */}
-            <div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="exampleModal_2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             ...
                         </div>
                     </div>

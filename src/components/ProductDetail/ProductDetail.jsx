@@ -8,11 +8,10 @@ import { useParams } from 'react-router-dom';
 function ProductDetail() {
 
     let idDetail = useParams().nameProductDetail
-    console.log(10, idDetail);
     const [data, setData] = useState([])
 
     function pushData() {
-        console.log(12332198);
+        data.amountOrder = 1
         let cloneOder = window.localStorage.getItem('oderData')
         if (cloneOder) {
             cloneOder = JSON.parse(cloneOder)
