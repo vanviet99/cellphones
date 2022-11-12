@@ -8,10 +8,10 @@ import { useParams } from 'react-router-dom';
 function ProductDetail() {
 
     let idDetail = useParams().nameProductDetail
-    console.log(10, idDetail);
     const [data, setData] = useState([])
 
     function pushData() {
+        data.amountOrder = 1
         let cloneOder = window.localStorage.getItem('oderData')
         if (cloneOder) {
             cloneOder = JSON.parse(cloneOder)
@@ -26,7 +26,6 @@ function ProductDetail() {
         window.scrollTo(0, 0)
         axios.get(`https://shope-b3.thaihm.site/api//product/get-one-product/${idDetail}`)
             .then(function (res) {
-                console.log(10, res.data);
                 setData(res.data.product)
             })
             .catch(function (error) {
