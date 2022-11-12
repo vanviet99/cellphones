@@ -211,3 +211,25 @@
 .home__content__list__cart__Fav i:hover{
 color: pink;
 }
+@media screen and (max-width: 1024px) {
+    .test{
+      width: calc(33.3vw - 12px);
+    }
+    .home__content__list{
+      width: 100vw;
+    }
+}
+@media screen and (max-width: 768px) {
+  .test{
+    width: calc(50vw - 12px);
+  }
+  .home__content__list{
+    width: 100vw;
+  }
+  .hide1{
+    display: none;
+  }
+  .test2{
+    width: 42vw;
+  }
+}

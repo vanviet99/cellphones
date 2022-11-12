@@ -31,12 +31,12 @@ function HomeContent() {
                 <div className="home__content__list2__btnall"> 
                 <Link to={'/allproduct'}><button> <i class="fa-solid fa-flask-vial"></i> Lọc sản phẩm</button></Link>
                 <Link to={'/allproduct'}><button>Xem tất cả</button></Link></div>
-                <div className="home__content__list2__cart">
+                <div className="home__content__list2__cart ">
                     {dataProduct.filter((value, index) => index < showmore).map(value => {
                         let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
                         return (
                             <a href={`/ProductDetail/${value._id}`}>
-                                <div key={value._id} className="home__content__list__cart">
+                                <div key={value._id} className="home__content__list__cart test2">
                                     <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
                                     <h3>{value.productName}</h3>
                                     <p className='home__content__list__cart__price'>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
