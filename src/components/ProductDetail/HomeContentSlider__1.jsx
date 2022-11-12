@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
@@ -11,7 +11,7 @@ function HomeContentSlider__1() {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then(value => { 
+        }).then(value => {
             setDataProduct(value.data.products)
         })
             .catch(value => {
@@ -30,27 +30,27 @@ function HomeContentSlider__1() {
         }
     }
 
-    let count  = 0
-    let check  = 0
+    let count = 0
+    let check = 0
     window.localStorage.setItem('length', dataProduct.length)
-    var A 
-    useEffect(function(){
-         A = setInterval(function(){
+    var A
+    useEffect(function () {
+        A = setInterval(function () {
             count = document.querySelector('.home__content__list__cart').offsetWidth + 12
-            if(check < (240 * (window.localStorage.getItem('length') - 5 ))){
+            if (check < (240 * (window.localStorage.getItem('length') - 5))) {
                 check += document.querySelector('.home__content__list__cart').offsetWidth + 12
                 document.querySelector('.home__content__list').scrollLeft += count
-            } else{
-                clearInterval(A)
+            } else {
+                clearInterval(A) 
             }
-        },2000)
-        return ()=>{
+        }, 2000)
+        return () => {
             clearInterval(A)
         }
-    },[])
-  return (
-    <div>
-         <div className='home__content'>
+    }, [])
+    return (
+        <div>
+            <div className='home__content'>
                 <div className='home__content__list' >
                     <div className="home__content__list__top">
                         {dataProduct.map(value => {
@@ -76,8 +76,8 @@ function HomeContentSlider__1() {
 
 
             </div>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default HomeContentSlider__1
