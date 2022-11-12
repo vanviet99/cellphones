@@ -25,7 +25,8 @@ span {
     border-top:1px solid rgb(194, 184, 184) ;
     width: 100%;
     display: flex;
-    padding: 20px 150px
+    padding: 20px 150px;
+    background-color: white;
 }
 .lower {
     padding: 20px 150px;
