@@ -5,6 +5,7 @@ import { PhoneOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/i
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Header() {
     let nav = useNavigate()
@@ -54,6 +55,23 @@ function Header() {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+    const [dataSearch, setDataSearch] = useState([])
+
+
+    const handleSearch = (e) => {
+        setTimeout(() => {
+           if(e.target.value !== '' && e.target.value.length >= 2){
+            axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
+            .then(value => {
+                console.log(value.data.products);
+                setDataSearch(value.data.products)
+            })
+            .catch(value => {
+                console.log(value);
+            })
+           }
+        }, 500);
+    }
     return (
         <div className='Header'>
 
@@ -61,15 +79,15 @@ function Header() {
 
 
             {/* <!-- Modal1 --> */}
-            <div  className="modal fade" id="exampleModal_1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal_1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div  className="modal-header">
-                         
-                         <div className='abc'>
-                         <i  className="fa-solid fa-magnifying-glass name "></i>  <input   type="text"  placeholder='Nhập tên tỉnh thành'  /> 
-                         </div>
-                        
+                        <div className="modal-header">
+
+                            <div className='abc'>
+                                <i className="fa-solid fa-magnifying-glass name "></i>  <input type="text" placeholder='Nhập tên tỉnh thành' />
+                            </div>
+
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                         </div>
                         <div className="modal-body">
@@ -84,7 +102,7 @@ function Header() {
                                     <li>Hà Nam</li>
                                 </ul>
                                 <ul>
-                                <li><p>Hà Nội</p></li>
+                                    <li><p>Hà Nội</p></li>
                                     <li>Hồ Chí Minh</li>
                                     <li>Bắc Ninh</li>
                                     <li>Cao bằng</li>
@@ -101,7 +119,7 @@ function Header() {
                                     <li>Nam Định</li>
                                     <li>Hà Nam</li>
                                 </ul>
-    
+
                             </div>
                         </div>
                     </div>
@@ -173,7 +191,26 @@ function Header() {
 
                 <a className='Header__search'>
                     <div className='search__input' >
-                        <input className='input_1' type="text" placeholder='Bạn cần tìm ....' />
+                        <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm ....' />
+                        <div className="search__input__search">
+                            {dataSearch.length > 0 ? dataSearch.map((value,index) => {
+                                if( index < 5){
+                                    return (
+                                        <a href={`./productdetail/${value._id}`}>
+                                            <div key={value._id} className="search__input__search__card">
+                                            <div className="search__input__search__card__img">
+                                                <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                            </div>
+                                            <div className="search__input__search__card__info">
+                                                <h3>{value.productName}</h3>
+                                                <h4>{value.price}</h4>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    )
+                                }
+                            }) : null}
+                        </div>
                     </div>
                 </a>
 
@@ -188,7 +225,7 @@ function Header() {
                 <button className='Header__address_1' data-bs-toggle="modal" data-bs-target="#exampleModal_3">
                     <div className='address__icon' >
                         <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='address__content' >  <a style={{color:"aliceblue"}} href="https://cellphones.com.vn/dia-chi-cua-hang">Cửa hàng gần bạn nhất</a> </div>
+                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang">Cửa hàng gần bạn nhất</a> </div>
                 </button>
 
 
