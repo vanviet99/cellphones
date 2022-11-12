@@ -186,3 +186,16 @@
     cursor: pointer;
     float: right;
   }
+  .Cart__content__list__detail h3{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .btndeleteCard{
+    border:  none;
+    background-color: #fff;
+    padding: 2px;
+  }
+  .btndeleteCard i:hover{
+    color: #d70018 !important;
+  }
