@@ -1,5 +1,5 @@
 import './Header.css'
-import { Button, Modal, Checkbox, Form, Input, message } from 'antd';
+import { Button, Modal, Form, Input, message } from 'antd';
 import { Link } from "react-router-dom";
 import { PhoneOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'
 import React, { useEffect, useState } from 'react';
@@ -46,9 +46,9 @@ function Header() {
 
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
+    // const showModal = () => {
+    //     setIsModalOpen(true);
+    // };
     const handleOk = () => {
         setIsModalOpen(false);
     };
@@ -74,11 +74,6 @@ function Header() {
     }
     return (
         <div className='Header'>
-
-            {/* <!-- Button trigger modal --> */}
-
-
-            {/* <!-- Modal1 --> */}
             <div className="modal fade" id="exampleModal_1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -126,8 +121,6 @@ function Header() {
                 </div>
             </div>
 
-
-            {/* <!-- Modal2 --> */}
             <div className="modal fade" id="exampleModal_2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -141,38 +134,6 @@ function Header() {
                     </div>
                 </div>
             </div>
-
-            {/* <!-- Modal3 --> */}
-
-            {/* <div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-
             <Modal className='modal' title="ĐĂNG NHẬP TÀI KHOẢN SMEMBER" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 
             </Modal>
@@ -189,7 +150,7 @@ function Header() {
                 </button>
 
 
-                <a className='Header__search'>
+                <p className='Header__search'>
                     <div className='search__input' >
                         <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm ....' />
                         <div className="search__input__search">
@@ -212,7 +173,7 @@ function Header() {
                             }) : null}
                         </div>
                     </div>
-                </a>
+                </p>
 
 
                 <button className='Header__phone' data-bs-toggle="modal" data-bs-target="#exampleModal_2">
@@ -229,13 +190,13 @@ function Header() {
                 </button>
 
 
-                <a className='Header__cart' onClick={function () {
+                <p className='Header__cart' onClick={function () {
                     nav('/card')
                 }}>
                     <div className='cart__icon' ><ShoppingCartOutlined /></div>
                     <div className='cart__content' >Giỏ hàng</div>
 
-                </a>
+                </p>
 
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='Header__login' >
                     <div className='login__icon'><UserOutlined /></div>
@@ -251,7 +212,7 @@ function Header() {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="exampleModalLabel">ĐĂNG NHẬP TÀI KHOẢN SMEMBER</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                         </div>
                         <div className="modal-body">
                             <div className='Login__modal'>
@@ -271,7 +232,7 @@ function Header() {
                                     autoComplete="off"
                                 >
                                     <Form.Item className='form__header'
-                                        label="Email"
+                                        label=" "
                                         name="email"
                                         rules={[
                                             {
@@ -284,11 +245,11 @@ function Header() {
                                             },
                                         ]}
                                     >
-                                        <Input />
+                                        <Input placeholder='Nhập email hoặc số điện thoại' />
                                     </Form.Item>
 
                                     <Form.Item className='form__header'
-                                        label="Password"
+                                        label=" "
                                         name="password"
                                         rules={[
                                             {
@@ -297,16 +258,11 @@ function Header() {
                                             },
                                         ]}
                                     >
-                                        <Input.Password />
+                                        <Input.Password placeholder='Nhập mật khẩu'/>
                                     </Form.Item>
-                                    <a href="">Quên Mật Khẩu ?</a>
-
-                                    <div style={{ display: "flex", width: "200px" }}>
-
-                                        <Button style={{ padding: "0 234px", width: "100%", color: "white", backgroundColor: '#d70018', border: "none" }} type="primary" htmlType="submit">
-                                            <p className='dangnhap123'>Đăng Nhập</p>
-                                        </Button>
-
+                                    <i className='forgot-pass' href="">Quên Mật Khẩu ?</i>
+                                    <div style={{ display: "flex", width: "100%", background:'#d70018', padding:'3px' }}>
+                                        <Button style={{width: "100%", color: "white", backgroundColor: '#d70018', border: "none", fontSize:'16px',fontFamily:'sans-serif', padding:'20px', boxShadow:'none',display:'flex',alignItems:'center', justifyContent:'center' }} type="primary" htmlType="submit">Đăng nhập</Button>
                                     </div>
 
                                     <div className='Đangkyngay_2'>
