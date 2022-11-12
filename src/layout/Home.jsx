@@ -15,7 +15,7 @@ function Home() {
   window.onscroll = function() {myFunction()};
 
   function myFunction() {
-    if (document.documentElement.scrollTop > 1200) {
+    if (document.documentElement.scrollTop > 1500) {
       document.getElementById("back-to-top").className = "showbtn__back__to__top";
     } else {
       document.getElementById("back-to-top").className = "hidebtn__back__to__top";
