@@ -27,7 +27,6 @@ function GetAllProduct() {
     return value.brand
   })
   brand = brand.filter((value, index) => brand.indexOf(value) == index)
-  console.log(brand);
   return (
     <div className='GetAllProduct'>
 
@@ -44,7 +43,7 @@ function GetAllProduct() {
           <h2>Chọn theo loại</h2>
           {brand.map(value => {
             return (
-              <button key={value}><i class="fa-solid fa-flask-vial"></i><p>{value}</p></button>
+              <button key={value} ><i class="fa-solid fa-flask-vial"></i><p>{value}</p></button>
             )
           })}
 

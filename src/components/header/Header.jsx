@@ -56,13 +56,24 @@ function Header() {
         setIsModalOpen(false);
     };
     const [dataSearch, setDataSearch] = useState([])
-
+    // .onclick(function(){
+    //     setDataSearch([])
+    // })
+   useEffect(function(){
+    if(dataSearch){
+        document.querySelector('.fadeheader').addEventListener("click", function(){
+            document.querySelector('.fadeheader').classList.remove('showfade')
+            setDataSearch([])
+        });
+    }
+   },[dataSearch])
 
     const handleSearch = (e) => {
         setTimeout(() => {
            if(e.target.value !== '' && e.target.value.length >= 2){
             axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
             .then(value => {
+                document.querySelector('.fadeheader').classList.add('showfade')
                 console.log(value.data.products);
                 setDataSearch(value.data.products)
             })
@@ -74,6 +85,7 @@ function Header() {
     }
     return (
         <div className='Header'>
+            <div className="fadeheader"></div>
             <div className="modal fade" id="exampleModal_1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">

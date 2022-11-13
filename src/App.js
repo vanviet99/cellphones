@@ -5,8 +5,8 @@ import CardProduct from './layout/CardProduct';
 import Home from './layout/Home';
 import SignUp from './layout/SignUp';
 import Payment__layout from './layout/Payment__layout';
-import Banner from './components/Banner/Banner';
 import GetAllProduct from './layout/GetAllProduct';
+import User from './layout/User';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path='/home' element={<Home></Home>}></Route>
           <Route path='/signup' element={<SignUp></SignUp>}></Route>
           <Route path='/payment-info' element={<Payment__layout></Payment__layout>}></Route>
-         
+          <Route path='/user/:IDUser' element={<User></User>}></Route>
         </Routes>
     </BrowserRouter>
   );
