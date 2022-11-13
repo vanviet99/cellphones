@@ -169,7 +169,7 @@ function Header() {
                             {dataSearch.length > 0 ? dataSearch.map((value,index) => {
                                 if( index < 5){
                                     return (
-                                        <a href={`./productdetail/${value._id}`}>
+                                        <a href={`/productdetail/${value._id}`}>
                                             <div key={value._id} className="search__input__search__card">
                                             <div className="search__input__search__card__img">
                                                 <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
