@@ -196,7 +196,7 @@
   margin-bottom: 15px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 .home__content__list2__btnall button{
   border-radius: 10px;
