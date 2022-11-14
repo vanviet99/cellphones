@@ -199,6 +199,7 @@
   justify-content: flex-start;
 }
 .home__content__list2__btnall button{
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%);
   border-radius: 10px;
   border: 1px solid #e5e7eb;
     font-size: 13px;
@@ -232,4 +233,44 @@ color: pink;
   .test2{
     width: 42vw;
   }
+}
+
+.home__content__list2__category{
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.home__content__list2__category__item{
+  cursor: pointer;
+  overflow: hidden;
+  margin-right: 18px;
+  width: 111px;
+  position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    height: 125px;
+  background-color: rgb(242, 131, 118);
+}
+
+.home__content__list2__category__item p{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3px 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(249, 62, 34);
+    word-break: break-word;
+    z-index: 1;
+    display: block;
+}
+.home__content__list2__category__item img {
+  transition: all 0.3s linear;
+  width: 111px;
+  height: 125px;
+}
+.home__content__list2__category__item img:hover{
+  transform: scale(1.3);
 }
