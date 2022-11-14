@@ -64,7 +64,7 @@ function SignUp() {
                 <div className='img__up'>
                     <img style={{ width: "300px" }} src="https://cellphones.com.vn/smember/_nuxt/img/Shipper_CPS3.0251fdd.png" alt="" />
                 </div>
-                <div class="login-form__title">Đăng nhập tài khoản Smember</div>
+                <div class="login-form__title">Đăng Ký Tài Khoản</div>
 
 
 
@@ -109,7 +109,7 @@ function SignUp() {
                         }}
                     >
                         <Button type="primary" htmlType="submit">
-                            Submit
+                            ĐĂNG KÝ
                         </Button>
                     </Form.Item>
                 </Form>
