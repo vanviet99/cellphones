@@ -9,7 +9,7 @@ function Card() {
     let id = useParams()
     let backbtn = id.nameProductDetail ? id.nameProductDetail : ''
 
-    let data = JSON.parse(window.localStorage.getItem('oderData'))
+    let data = JSON.parse(window.localStorage.getItem('oderData')) ? JSON.parse(window.localStorage.getItem('oderData')) : []
 
     window.localStorage.getItem('totalPrice') ?  window.localStorage.getItem('totalPrice') : window.localStorage.setItem('totalPrice', 20000)
     function getAllPrice(newdata){
