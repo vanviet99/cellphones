@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function Header() {
-    const state = useSelector(function(state){
+    const state = useSelector(function (state) {
         return state.amountCart
     })
     let nav = useNavigate()
@@ -63,28 +63,28 @@ function Header() {
     // .onclick(function(){
     //     setDataSearch([])
     // })
-   useEffect(function(){
-    if(dataSearch){
-        document.querySelector('.fadeheader').addEventListener("click", function(){
-            document.querySelector('.fadeheader').classList.remove('showfade')
-            setDataSearch([])
-        });
-    }
-   },[dataSearch])
+    useEffect(function () {
+        if (dataSearch) {
+            document.querySelector('.fadeheader').addEventListener("click", function () {
+                document.querySelector('.fadeheader').classList.remove('showfade')
+                setDataSearch([])
+            });
+        }
+    }, [dataSearch])
 
     const handleSearch = (e) => {
         setTimeout(() => {
-           if(e.target.value !== '' && e.target.value.length >= 2){
-            axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
-            .then(value => {
-                document.querySelector('.fadeheader').classList.add('showfade')
-                console.log(value.data.products);
-                setDataSearch(value.data.products)
-            })
-            .catch(value => {
-                console.log(value);
-            })
-           }
+            if (e.target.value !== '' && e.target.value.length >= 2) {
+                axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
+                    .then(value => {
+                        document.querySelector('.fadeheader').classList.add('showfade')
+                        console.log(value.data.products);
+                        setDataSearch(value.data.products)
+                    })
+                    .catch(value => {
+                        console.log(value);
+                    })
+            }
         }, 500);
     }
     return (
@@ -144,9 +144,6 @@ function Header() {
                             <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="modal-body">
-                            ...
-                        </div>
                     </div>
                 </div>
             </div>
@@ -161,28 +158,28 @@ function Header() {
 
                 <button className='Header__address ' data-bs-toggle="modal" data-bs-target="#exampleModal_1">
                     <div className='phone__icon' >
-                        <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='phone__content' > Xem giá mua tại </div>
+                        <i className="fa-sharp fa-solid fa-location-dot"></i> Xem giá tại                 </div>
+                    {/* <div className='phone__content' > Xem giá tại </div> */}
                 </button>
 
 
                 <p className='Header__search'>
                     <div className='search__input' >
-                        <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm ....' />
+                        <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm gì ?' />
                         <div className="search__input__search">
-                            {dataSearch.length > 0 ? dataSearch.map((value,index) => {
-                                if( index < 5){
+                            {dataSearch.length > 0 ? dataSearch.map((value, index) => {
+                                if (index < 5) {
                                     return (
                                         <a href={`/productdetail/${value._id}`}>
                                             <div key={value._id} className="search__input__search__card">
-                                            <div className="search__input__search__card__img">
-                                                <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                                <div className="search__input__search__card__img">
+                                                    <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                                </div>
+                                                <div className="search__input__search__card__info">
+                                                    <h3>{value.productName}</h3>
+                                                    <h4>{value.price}</h4>
+                                                </div>
                                             </div>
-                                            <div className="search__input__search__card__info">
-                                                <h3>{value.productName}</h3>
-                                                <h4>{value.price}</h4>
-                                            </div>
-                                        </div>
                                         </a>
                                     )
                                 }
@@ -192,31 +189,34 @@ function Header() {
                 </p>
 
 
-                <button className='Header__phone' data-bs-toggle="modal" data-bs-target="#exampleModal_2">
+                <button className='Header__phone'>
                     <div className='phone__icon' >
-                        <PhoneOutlined />
+                        {/* <PhoneOutlined /> Gọi để mua hàng 1800.2097 */}
+                        <i class="fa-solid fa-phone"></i> Gọi để mua hàng 1800.2097
                     </div>
-                    <div className='phone__content' > Gọi để mua hàng ....</div>
                 </button>
 
                 <button className='Header__address_1' data-bs-toggle="modal" data-bs-target="#exampleModal_3">
-                    <div className='address__icon' >
-                        <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang">Cửa hàng gần bạn nhất</a> </div>
+                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang"><i className="fa-sharp fa-solid fa-location-dot" ></i>    Cửa hàng gần bạn nhất</a> </div>
                 </button>
 
 
                 <p className='Header__cart' onClick={function () {
                     nav('/card')
                 }}>
-                    <div className='cart__icon' ><ShoppingCartOutlined /> {state} </div>
-                    <div className='cart__content' >Giỏ hàng</div>
+                    <div class=" position-relative">
+                        <div className='cart__content' ><i class="fa-solid fa-cart-shopping"></i> </div>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {state}
+                            <span class="visually-hidden"></span>
+                        </span>
+                    </div>
+                    gio hang
 
                 </p>
 
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='Header__login' >
-                    <div className='login__icon'><UserOutlined /></div>
-                    <div className='login__content' >{user ? user : 'ĐĂNG NHẬP'}</div>
+                    <div className='login__content' > <i class="fa-regular fa-user"></i> {user ? user : 'ĐĂNG NHẬP'}</div>
                 </button>
 
             </div>
@@ -274,16 +274,20 @@ function Header() {
                                             },
                                         ]}
                                     >
-                                        <Input.Password placeholder='Nhập mật khẩu'/>
+                                        <Input.Password placeholder='Nhập mật khẩu' />
                                     </Form.Item>
                                     <i className='forgot-pass' href="">Quên Mật Khẩu ?</i>
-                                    <div style={{ display: "flex", width: "100%", background:'#d70018', padding:'3px' }}>
-                                        <Button style={{width: "100%", color: "white", backgroundColor: '#d70018', border: "none", fontSize:'16px',fontFamily:'sans-serif', padding:'20px', boxShadow:'none',display:'flex',alignItems:'center', justifyContent:'center' }} type="primary" htmlType="submit">Đăng nhập</Button>
+                                    <div style={{ display: "flex", width: "100%", background: '#d70018', padding: '3px', borderRadius: '5px' }}>
+                                        <Button style={{ width: "100%", color: "white", backgroundColor: '#d70018', border: "none", fontSize: '16px', fontFamily: 'sans-serif', padding: '20px', boxShadow: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} type="primary" htmlType="submit">Đăng nhập</Button>
                                     </div>
-
+                                    <div className="or">
+                                        <p>------------------------------------------- Hoặc -------------------------------------------- </p>
+                                    </div>
+                                    <div className="sign-google">
+                                        <p><i class="fa-brands fa-google"></i>Đăng nhập bằng tài khoản Google</p>
+                                    </div>
                                     <div className='Đangkyngay_2'>
-
-                                        <p style={{ color: "black", padding: "20px", right: '10px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
+                                        <p style={{ color: "black", right: '10px', fontSize: '16px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
                                     </div>
                                 </Form>
                             </div>
