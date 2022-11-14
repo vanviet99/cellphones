@@ -9,7 +9,21 @@ function HomeContent() {
     const [showmore, setShowmore] = useState(10)
 
     const [dataProduct, setDataProduct] = useState([])
+    const [categories, setCategories] = useState([])
     useEffect(() => {
+        axios.get('https://shope-b3.thaihm.site/api/category/get-all-categories', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(value => {
+            console.log(value.data.categories);
+            setCategories(value.data.categories)
+        }).catch(err => {
+            console.log(err);
+        })
+
+
+
         axios.get('https://shope-b3.thaihm.site/api/product/get-all-products', {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -28,9 +42,23 @@ function HomeContent() {
         <div className="home__content__block">
             <HomeContentSlider></HomeContentSlider>
             <div className="home__content__list2">
-                <div className="home__content__list2__btnall"> 
-                <Link to={'/allproduct'}><button> <i class="fa-solid fa-flask-vial"></i> Lọc sản phẩm</button></Link>
-                <Link to={'/allproduct'}><button>Xem tất cả</button></Link></div>
+            <div className="home__content__list2__category">
+                    {categories.map(value => {
+                        return (
+                            <div className="home__content__list2__category__item">
+                                <p>{value.categoryName}</p>
+                                <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                            </div>
+                        )
+                    })}
+
+                </div>
+                <div className="home__content__list2__btnall">
+                    <Link to={'/allproduct'}><button> <i class="fa-solid fa-flask-vial"></i> Lọc sản phẩm</button></Link>
+                    <Link to={'/allproduct'}><button>Xem tất cả</button></Link></div>
+
+                
+
                 <div className="home__content__list2__cart ">
                     {dataProduct.filter((value, index) => index < showmore).map(value => {
                         let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
