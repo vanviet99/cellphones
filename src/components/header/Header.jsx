@@ -5,9 +5,13 @@ import { PhoneOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/i
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function Header() {
+    const state = useSelector(function(state){
+        return state.amountCart
+    })
     let nav = useNavigate()
     const [user, setuser] = useState()
     useEffect(function () {
@@ -205,7 +209,7 @@ function Header() {
                 <p className='Header__cart' onClick={function () {
                     nav('/card')
                 }}>
-                    <div className='cart__icon' ><ShoppingCartOutlined /></div>
+                    <div className='cart__icon' ><ShoppingCartOutlined /> {state} </div>
                     <div className='cart__content' >Giỏ hàng</div>
 
                 </p>
