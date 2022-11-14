@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import './Card.css'
 import { json, Link, useParams } from "react-router-dom";
-import { Empty, Button, notification } from 'antd';
+import { Empty, Button, notification, message } from 'antd';
 import { LeftOutlined, CloseOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css';
+import { useDispatch } from 'react-redux';
+import { removeAmount } from '../../redux-toolkit/indexSlice';
 
 function Card() {
+    const dispatch  = useDispatch()
     let id = useParams()
     let backbtn = id.nameProductDetail ? id.nameProductDetail : ''
 
@@ -51,9 +54,12 @@ function Card() {
     }
 
     const handleDelete = (e)=>{
+
+        dispatch(removeAmount(1))
         let newdataOrder = data.filter((value,index) => index !== e)
         window.localStorage.setItem('oderData', JSON.stringify(newdataOrder))
         setPrice(getAllPrice(newdataOrder))
+        message.error('san pham da dc xoa !!!')
         // window.location.assign('/card')
     }
 

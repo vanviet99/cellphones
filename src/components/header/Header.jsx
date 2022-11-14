@@ -5,9 +5,13 @@ import { PhoneOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/i
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function Header() {
+    const state = useSelector(function (state) {
+        return state.amountCart
+    })
     let nav = useNavigate()
     const [user, setuser] = useState()
     useEffect(function () {
@@ -59,28 +63,28 @@ function Header() {
     // .onclick(function(){
     //     setDataSearch([])
     // })
-   useEffect(function(){
-    if(dataSearch){
-        document.querySelector('.fadeheader').addEventListener("click", function(){
-            document.querySelector('.fadeheader').classList.remove('showfade')
-            setDataSearch([])
-        });
-    }
-   },[dataSearch])
+    useEffect(function () {
+        if (dataSearch) {
+            document.querySelector('.fadeheader').addEventListener("click", function () {
+                document.querySelector('.fadeheader').classList.remove('showfade')
+                setDataSearch([])
+            });
+        }
+    }, [dataSearch])
 
     const handleSearch = (e) => {
         setTimeout(() => {
-           if(e.target.value !== '' && e.target.value.length >= 2){
-            axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
-            .then(value => {
-                document.querySelector('.fadeheader').classList.add('showfade')
-                console.log(value.data.products);
-                setDataSearch(value.data.products)
-            })
-            .catch(value => {
-                console.log(value);
-            })
-           }
+            if (e.target.value !== '' && e.target.value.length >= 2) {
+                axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
+                    .then(value => {
+                        document.querySelector('.fadeheader').classList.add('showfade')
+                        console.log(value.data.products);
+                        setDataSearch(value.data.products)
+                    })
+                    .catch(value => {
+                        console.log(value);
+                    })
+            }
         }, 500);
     }
     return (
@@ -163,19 +167,19 @@ function Header() {
                     <div className='search__input' >
                         <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm gì ?' />
                         <div className="search__input__search">
-                            {dataSearch.length > 0 ? dataSearch.map((value,index) => {
-                                if( index < 5){
+                            {dataSearch.length > 0 ? dataSearch.map((value, index) => {
+                                if (index < 5) {
                                     return (
                                         <a href={`/productdetail/${value._id}`}>
                                             <div key={value._id} className="search__input__search__card">
-                                            <div className="search__input__search__card__img">
-                                                <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                                <div className="search__input__search__card__img">
+                                                    <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                                </div>
+                                                <div className="search__input__search__card__info">
+                                                    <h3>{value.productName}</h3>
+                                                    <h4>{value.price}</h4>
+                                                </div>
                                             </div>
-                                            <div className="search__input__search__card__info">
-                                                <h3>{value.productName}</h3>
-                                                <h4>{value.price}</h4>
-                                            </div>
-                                        </div>
                                         </a>
                                     )
                                 }
@@ -200,7 +204,15 @@ function Header() {
                 <p className='Header__cart' onClick={function () {
                     nav('/card')
                 }}>
-                    <div className='cart__content' ><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</div>
+                    <div class=" position-relative">
+                        <div className='cart__content' ><i class="fa-solid fa-cart-shopping"></i> </div>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {state}
+                            <span class="visually-hidden"></span>
+                        </span>
+                    </div>
+                    gio hang
+
                 </p>
 
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='Header__login' >
@@ -235,7 +247,7 @@ function Header() {
                                     onFinishFailed={onFinishFailed}
                                     autoComplete="off"
                                 >
-                                    <Form.Item className='form__header' 
+                                    <Form.Item className='form__header'
                                         label=" "
                                         name="email"
                                         rules={[
@@ -262,11 +274,11 @@ function Header() {
                                             },
                                         ]}
                                     >
-                                        <Input.Password placeholder='Nhập mật khẩu'/>
+                                        <Input.Password placeholder='Nhập mật khẩu' />
                                     </Form.Item>
                                     <i className='forgot-pass' href="">Quên Mật Khẩu ?</i>
-                                    <div style={{ display: "flex", width: "100%", background:'#d70018', padding:'3px', borderRadius:'5px' }}>
-                                        <Button style={{width: "100%", color: "white", backgroundColor: '#d70018', border: "none", fontSize:'16px',fontFamily:'sans-serif', padding:'20px', boxShadow:'none',display:'flex',alignItems:'center', justifyContent:'center' }} type="primary" htmlType="submit">Đăng nhập</Button>
+                                    <div style={{ display: "flex", width: "100%", background: '#d70018', padding: '3px', borderRadius: '5px' }}>
+                                        <Button style={{ width: "100%", color: "white", backgroundColor: '#d70018', border: "none", fontSize: '16px', fontFamily: 'sans-serif', padding: '20px', boxShadow: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} type="primary" htmlType="submit">Đăng nhập</Button>
                                     </div>
                                     <div className="or">
                                         <p>------------------------------------------- Hoặc -------------------------------------------- </p>
@@ -275,7 +287,7 @@ function Header() {
                                         <p><i class="fa-brands fa-google"></i>Đăng nhập bằng tài khoản Google</p>
                                     </div>
                                     <div className='Đangkyngay_2'>
-                                        <p style={{ color: "black", right: '10px', fontSize:'16px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
+                                        <p style={{ color: "black", right: '10px', fontSize: '16px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
                                     </div>
                                 </Form>
                             </div>

@@ -5,21 +5,31 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import HomeContentSlider__1 from './HomeContentSlider__1';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { pushAmount } from '../../redux-toolkit/indexSlice';
+import { message } from 'antd';
 function ProductDetail() {
 
     let idDetail = useParams().nameProductDetail
     const [data, setData] = useState([])
-
+    const dispatch = useDispatch()
     function pushData() {
         data.amountOrder = 1
-        let cloneOder = window.localStorage.getItem('oderData')
+        let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
+        console.log(123123);
         if (cloneOder) {
-            cloneOder = JSON.parse(cloneOder)
-            let newCloneOder = [...cloneOder, data]
-            localStorage.setItem('oderData', JSON.stringify(newCloneOder));
-        } else (
+            if (!cloneOder.find(value => value._id == data._id)) {
+                dispatch(pushAmount(1))
+                let newCloneOder = [...cloneOder, data]
+                localStorage.setItem('oderData', JSON.stringify(newCloneOder));
+                message.success('da them san pham')
+            } else { message.success('da them san pham trc do') }
+        } else {
+            dispatch(pushAmount(1))
+
             localStorage.setItem('oderData', JSON.stringify([data]))
-        )
+            message.success('da them san pham')
+        }
 
     }
     useEffect(function () {
