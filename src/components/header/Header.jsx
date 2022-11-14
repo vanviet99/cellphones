@@ -140,9 +140,6 @@ function Header() {
                             <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="modal-body">
-                            ...
-                        </div>
                     </div>
                 </div>
             </div>
@@ -157,14 +154,14 @@ function Header() {
 
                 <button className='Header__address ' data-bs-toggle="modal" data-bs-target="#exampleModal_1">
                     <div className='phone__icon' >
-                        <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='phone__content' > Xem giá mua tại </div>
+                        <i className="fa-sharp fa-solid fa-location-dot"></i> Xem giá tại                 </div>
+                    {/* <div className='phone__content' > Xem giá tại </div> */}
                 </button>
 
 
                 <p className='Header__search'>
                     <div className='search__input' >
-                        <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm ....' />
+                        <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm gì ?' />
                         <div className="search__input__search">
                             {dataSearch.length > 0 ? dataSearch.map((value,index) => {
                                 if( index < 5){
@@ -188,31 +185,26 @@ function Header() {
                 </p>
 
 
-                <button className='Header__phone' data-bs-toggle="modal" data-bs-target="#exampleModal_2">
+                <button className='Header__phone'>
                     <div className='phone__icon' >
-                        <PhoneOutlined />
+                        {/* <PhoneOutlined /> Gọi để mua hàng 1800.2097 */}
+                        <i class="fa-solid fa-phone"></i> Gọi để mua hàng 1800.2097
                     </div>
-                    <div className='phone__content' > Gọi để mua hàng ....</div>
                 </button>
 
                 <button className='Header__address_1' data-bs-toggle="modal" data-bs-target="#exampleModal_3">
-                    <div className='address__icon' >
-                        <i className="fa-sharp fa-solid fa-location-dot"></i>                    </div>
-                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang">Cửa hàng gần bạn nhất</a> </div>
+                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang"><i className="fa-sharp fa-solid fa-location-dot" ></i>    Cửa hàng gần bạn nhất</a> </div>
                 </button>
 
 
                 <p className='Header__cart' onClick={function () {
                     nav('/card')
                 }}>
-                    <div className='cart__icon' ><ShoppingCartOutlined /></div>
-                    <div className='cart__content' >Giỏ hàng</div>
-
+                    <div className='cart__content' ><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</div>
                 </p>
 
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='Header__login' >
-                    <div className='login__icon'><UserOutlined /></div>
-                    <div className='login__content' >{user ? user : 'ĐĂNG NHẬP'}</div>
+                    <div className='login__content' > <i class="fa-regular fa-user"></i> {user ? user : 'ĐĂNG NHẬP'}</div>
                 </button>
 
             </div>
@@ -243,7 +235,7 @@ function Header() {
                                     onFinishFailed={onFinishFailed}
                                     autoComplete="off"
                                 >
-                                    <Form.Item className='form__header'
+                                    <Form.Item className='form__header' 
                                         label=" "
                                         name="email"
                                         rules={[
@@ -273,13 +265,17 @@ function Header() {
                                         <Input.Password placeholder='Nhập mật khẩu'/>
                                     </Form.Item>
                                     <i className='forgot-pass' href="">Quên Mật Khẩu ?</i>
-                                    <div style={{ display: "flex", width: "100%", background:'#d70018', padding:'3px' }}>
+                                    <div style={{ display: "flex", width: "100%", background:'#d70018', padding:'3px', borderRadius:'5px' }}>
                                         <Button style={{width: "100%", color: "white", backgroundColor: '#d70018', border: "none", fontSize:'16px',fontFamily:'sans-serif', padding:'20px', boxShadow:'none',display:'flex',alignItems:'center', justifyContent:'center' }} type="primary" htmlType="submit">Đăng nhập</Button>
                                     </div>
-
+                                    <div className="or">
+                                        <p>------------------------------------------- Hoặc -------------------------------------------- </p>
+                                    </div>
+                                    <div className="sign-google">
+                                        <p><i class="fa-brands fa-google"></i>Đăng nhập bằng tài khoản Google</p>
+                                    </div>
                                     <div className='Đangkyngay_2'>
-
-                                        <p style={{ color: "black", padding: "20px", right: '10px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
+                                        <p style={{ color: "black", right: '10px', fontSize:'16px' }} > Bạn chưa có tài khoản? <Link to={'/signup'} ><button className='DKN' data-bs-dismiss="modal">Đăng ký ngay ?</button></Link></p>
                                     </div>
                                 </Form>
                             </div>
