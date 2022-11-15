@@ -1,13 +1,11 @@
 import React from 'react'
 import Header from '../components/header/Header'
-import { Button, Form, Input, InputNumber,  message} from 'antd';
+import { Button, Form, Input, InputNumber, message } from 'antd';
 import { LeftOutlined, } from '@ant-design/icons'
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css'
-import  Axios  from 'axios';
-
-
+import Axios from 'axios';
 
 
 const layout = {
@@ -30,27 +28,29 @@ const validateMessages = {
     },
 };
 
+function SignIn() {
 
-function SignUp() {
     const nav = useNavigate()
 
     const onFinish = (values) => {
-        Axios.post('https://shope-b3.thaihm.site/api/auth/sign-up',
-        {
-            email: values.email,
-            password: values.password,
-        }
+
+        Axios.post('https://shope-b3.thaihm.site/api/auth/sign-in',
+            {
+                email: values.email,
+                password: values.password,
+            }
         ).then(function (value) {
             window.localStorage.setItem('token', value.data.token)
             window.localStorage.setItem('username', values.email)
 
             message.success('Đăng Nhập Thành Công')
-            window.location.assign('/signin')
+            window.location.assign('/home')
+
+        }).catch(function (value) {
+            message.error('Đăng Nhập Thất Bại')
+
         })
     };
-
-
-
     return (
         <div>  <Header></Header>
 
@@ -60,7 +60,7 @@ function SignUp() {
                 <div className='img__up'>
                     <img style={{ width: "300px" }} src="https://cellphones.com.vn/smember/_nuxt/img/Shipper_CPS3.0251fdd.png" alt="" />
                 </div>
-                <div class="login-form__title">Đăng Ký Tài Khoản</div>
+                <div class="login-form__title">BẮT ĐẦU MUA HÀNG VỚI CELLPHONES</div>
 
 
 
@@ -105,7 +105,7 @@ function SignUp() {
                         }}
                     >
                         <Button type="primary" htmlType="submit">
-                            ĐĂNG KÝ
+                            ĐĂNG NHẬP
                         </Button>
                     </Form.Item>
                 </Form>
@@ -116,4 +116,4 @@ function SignUp() {
     )
 }
 
-export default SignUp
+export default SignIn

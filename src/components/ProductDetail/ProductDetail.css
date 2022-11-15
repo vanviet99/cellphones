@@ -327,3 +327,18 @@
 .detail1-box1-Homecontent {
     transform: translateY(-100px);
 }
+.flex{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.detail__product{
+    cursor: pointer;
+}
+.detail__product:hover{
+    background-color: antiquewhite;
+}
+.detailchoosed{
+    background-color: antiquewhite;
+}

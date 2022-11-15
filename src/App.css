@@ -17,4 +17,41 @@
 .component__productdetail{
   padding: 70px 0px;
 }
+.search__input input{
+  padding: 8px 16px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-menu__title, .ant-col-6 , .Header__address , .Header__phone, .Header__address_1{
+    display: none !important;
+  }
+ .components__homecontent{
+  overflow: hidden;
+ }
+ .upper , .lower{
+  padding: unset !important;
+ }
+  .upper{
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-menu{
+    overflow: hidden;
+  }
+  .slider{
+    margin: 0 !important;
+    transform: translateX(-15px);
+  }
+  .gohang, .ten{
+    display: none !important;
+  }
+  .Header__logo{
+    display: none;
+  }
+  .Header__nav{
+    justify-content: flex-start !important;
+  }
+}
+
 

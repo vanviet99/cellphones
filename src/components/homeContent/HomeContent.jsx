@@ -16,7 +16,6 @@ function HomeContent() {
                 Authorization: `Bearer ${token}`
             }
         }).then(value => {
-            console.log(value.data.categories);
             setCategories(value.data.categories)
         }).catch(err => {
             console.log(err);

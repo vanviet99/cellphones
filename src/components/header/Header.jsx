@@ -6,25 +6,34 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
 
 function Header() {
+    window.localStorage.setItem('amountdrop', 0)
+    const [amounrdrop, setAmountdrop] = useState(window.localStorage.getItem('amountdrop') * 1)
     const state = useSelector(function (state) {
         return state.amountCart
     })
     let nav = useNavigate()
-    const [user, setuser] = useState()
+    const token = window.localStorage.getItem('token')
     useEffect(function () {
-        if (window.localStorage.getItem('token')) {
-            setuser(window.localStorage.getItem('username'))
-        } else {
-            setuser('Đăng Nhập')
-        }
-
+        // if (token) {
+        //     Axios.get('https://shope-b3.thaihm.site/api/auth/get-loged-in-user',
+        //         {
+        //             headers: {
+        //                 Authorization: `Bearer ${token}`
+        //             }
+        //         }
+        //     )
+        //         .then(value => {
+        //             console.log(value);
+        //         })
+        //         .catch(value => {
+        //             console.log(value);
+        //         })
+        // }
     }, [])
 
     const onFinish = (values) => {
-        console.log(values);
         Axios.post('https://shope-b3.thaihm.site/api/auth/sign-in',
             {
                 email: values.email,
@@ -36,10 +45,8 @@ function Header() {
 
             message.success('Đăng Nhập Thành Công')
             window.location.assign('/home')
-            console.log(value);
 
         }).catch(function (value) {
-            console.log(value);
             message.error('Đăng Nhập Thất Bại')
 
         })
@@ -75,10 +82,9 @@ function Header() {
     const handleSearch = (e) => {
         setTimeout(() => {
             if (e.target.value !== '' && e.target.value.length >= 2) {
-                axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
+                Axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
                     .then(value => {
                         document.querySelector('.fadeheader').classList.add('showfade')
-                        console.log(value.data.products);
                         setDataSearch(value.data.products)
                     })
                     .catch(value => {
@@ -86,6 +92,21 @@ function Header() {
                     })
             }
         }, 500);
+    }
+
+
+    const handleshowdrop = () => {
+        let a = amounrdrop
+        a++
+        window.localStorage.setItem('amountdrop', a)
+        setAmountdrop(a)
+        console.log(amounrdrop);
+        if (amounrdrop % 2 !== 0) {
+            document.querySelector('.Header__login__dropdown').classList.remove('showdrop')
+        }
+        else {
+            document.querySelector('.Header__login__dropdown').classList.add('showdrop')
+        }
     }
     return (
         <div className='Header'>
@@ -158,7 +179,7 @@ function Header() {
 
                 <button className='Header__address ' data-bs-toggle="modal" data-bs-target="#exampleModal_1">
                     <div className='phone__icon' >
-                        <i className="fa-sharp fa-solid fa-location-dot"></i> Xem giá tại                 </div>
+                        <i className="fa-sharp fa-solid fa-location-dot"></i> Xem giá tại</div>
                     {/* <div className='phone__content' > Xem giá tại </div> */}
                 </button>
 
@@ -170,17 +191,19 @@ function Header() {
                             {dataSearch.length > 0 ? dataSearch.map((value, index) => {
                                 if (index < 5) {
                                     return (
-                                        <a href={`/productdetail/${value._id}`}>
-                                            <div key={value._id} className="search__input__search__card">
-                                                <div className="search__input__search__card__img">
-                                                    <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                        <div key={index}>
+                                            <a href={`/productdetail/${value._id}`}>
+                                                <div key={value._id} className="search__input__search__card">
+                                                    <div className="search__input__search__card__img">
+                                                        <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
+                                                    </div>
+                                                    <div className="search__input__search__card__info">
+                                                        <h3>{value.productName}</h3>
+                                                        <h4>{value.price}</h4>
+                                                    </div>
                                                 </div>
-                                                <div className="search__input__search__card__info">
-                                                    <h3>{value.productName}</h3>
-                                                    <h4>{value.price}</h4>
-                                                </div>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
                                     )
                                 }
                             }) : null}
@@ -192,12 +215,12 @@ function Header() {
                 <button className='Header__phone'>
                     <div className='phone__icon' >
                         {/* <PhoneOutlined /> Gọi để mua hàng 1800.2097 */}
-                        <i class="fa-solid fa-phone"></i> Gọi để mua hàng 1800.2097
+                        <i class="fa-solid fa-phone"></i> Gọi để mua hàng <br /> 1800.2097
                     </div>
                 </button>
 
                 <button className='Header__address_1' data-bs-toggle="modal" data-bs-target="#exampleModal_3">
-                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang"><i className="fa-sharp fa-solid fa-location-dot" ></i>    Cửa hàng gần bạn nhất</a> </div>
+                    <div className='address__content' >  <a style={{ color: "aliceblue" }} href="https://cellphones.com.vn/dia-chi-cua-hang"><i className="fa-sharp fa-solid fa-location-dot" ></i>    Cửa hàng gần <br /> bạn nhất</a> </div>
                 </button>
 
 
@@ -211,13 +234,27 @@ function Header() {
                             <span class="visually-hidden"></span>
                         </span>
                     </div>
-                    gio hang
+                    <p className='gohang'>gio hang</p>
 
                 </p>
+                {token ? <div className='header__login__btn'>
+                    <button className='Header__login' onClick={handleshowdrop}>
+                        <div className='login__content' > <i class="fa-regular fa-user"></i> <p className='ten'>{window.localStorage.getItem('username')}</p></div>
+                    </button>
+                    <div className="Header__login__dropdown">
+                        <div className="Header__login__dropdown__item"><a href="/profile/info">Trang cá nhân</a></div>
+                        <div className="Header__login__dropdown__item"><a href="/profile/changePassword">Đổi mật khẩu</a></div>
+                        <div className="Header__login__dropdown__item logout" ><a onClick={function () {
+                            window.localStorage.removeItem('username')
+                            window.localStorage.removeItem('token')
+                            window.localStorage.removeItem('oderData')
+                            window.location.assign('/home')
+                        }}>Đăng Xuất</a></div>
 
-                <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='Header__login' >
-                    <div className='login__content' > <i class="fa-regular fa-user"></i> {user ? user : 'ĐĂNG NHẬP'}</div>
-                </button>
+                    </div>
+                </div> : <button data-bs-toggle='modal' data-bs-target='#exampleModal' className='Header__login' >
+                    <div className='login__content' > <i class="fa-regular fa-user"></i>  ĐĂNG NHẬP</div>
+                </button>}
 
             </div>
 
