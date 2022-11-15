@@ -12,11 +12,15 @@ function ProductDetail() {
 
     let idDetail = useParams().nameProductDetail
     const [data, setData] = useState([])
+    const [dataDt, setDataDt] = useState([])
+    const [idOnDetail, setIdOnDetail] = useState([])
+
+
     const dispatch = useDispatch()
     function pushData() {
-        data.amountOrder = 1
+        if(idOnDetail.length > 0){
+            data.amountOrder = 1
         let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
-        console.log(123123);
         if (cloneOder) {
             if (!cloneOder.find(value => value._id == data._id)) {
                 dispatch(pushAmount(1))
@@ -30,12 +34,17 @@ function ProductDetail() {
             localStorage.setItem('oderData', JSON.stringify([data]))
             message.success('da them san pham')
         }
+        } else{
+            message.error('vui long chon san pham')
+        }
+        
 
     }
     useEffect(function () {
         window.scrollTo(0, 0)
         axios.get(`https://shope-b3.thaihm.site/api//product/get-one-product/${idDetail}`)
             .then(function (res) {
+                setDataDt(res.data.product.listDtail)
                 setData(res.data.product)
             })
             .catch(function (error) {
@@ -43,6 +52,11 @@ function ProductDetail() {
             })
     }, [])
     let img = `https://shope-b3.thaihm.site/${data.thumbnail}`
+
+    const handleChoose=(id)=>{
+        setIdOnDetail([id])
+        console.log(id);
+    }
     return (
 
         <div style={{ margin: '30px' }}>
@@ -95,25 +109,18 @@ function ProductDetail() {
                                 </div>
                             </div>
                             <div className="detail-box2-item2">
-                                <ul>
-                                    <li>
-                                        <b>1 TB</b>
-                                        <p>36.990.000 đ</p>
-                                    </li>
-                                    <li>
-                                        <b>512GB</b>
-                                        <p>34.990.000 đ</p>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <b>256GB</b>
-                                        <p>30.990.000 đ</p>
-                                    </li>
-                                    <li>
-                                        < b>128GB</b>
-                                        <p>27.990.000 đ</p>
-                                    </li>
+
+                                <ul className='flex'>
+                                    { dataDt.map(value => {
+                                        return (
+                                            <li onClick={()=>handleChoose(value._id)} key={value._id} className={`detail__product ${idOnDetail == value._id ? 'detailchoosed': ''}`}>
+                                                <b>{value.rom}</b>
+                                                <b>--{value.ram}</b>
+                                                <p>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
+                                            </li>
+                                        )
+                                    })}
+
                                 </ul>
                             </div>
                             <b>Chọn màu để xem giá và chi nhánh có hàng</b>

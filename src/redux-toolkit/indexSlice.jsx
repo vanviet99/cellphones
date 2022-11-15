@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 
-const data = JSON.parse( window.localStorage.getItem('oderData'))
+const data = JSON.parse( window.localStorage.getItem('oderData')) ? JSON.parse( window.localStorage.getItem('oderData')) : []
 const indexSlice = createSlice({
     name: 'amountCart',
     initialState: data.length,

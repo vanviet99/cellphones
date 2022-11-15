@@ -213,7 +213,7 @@
 color: pink;
 }
 @media screen and (max-width: 1024px) {
-    .test{
+    .test {
       width: calc(33.3vw - 12px);
     }
     .home__content__list{
@@ -221,7 +221,7 @@ color: pink;
     }
 }
 @media screen and (max-width: 768px) {
-  .test{
+  .test {
     width: calc(50vw - 12px);
   }
   .home__content__list{
@@ -231,10 +231,27 @@ color: pink;
     display: none;
   }
   .test2{
-    width: 42vw;
+    width: calc(60vw - 12px);
+  }
+  .home__content__list2__cart {
+    justify-content: center !important;
+  }
+  #detail{
+    flex-direction: column;
+  }
+  .Cart__content__list__seller{
+    display: none;
+  }
+  .Cart__content__list{
+    max-width: 90vw;
+  }
+  .Cart__content__list__buy{
+    max-width: 100vw;
   }
 }
-
+.Header__login__dropdown {
+  width: 180px;
+}
 .home__content__list2__category{
   padding: 20px 0;
   display: flex;
