@@ -31,6 +31,18 @@ function Profile() {
     } else {
       window.location.assign(`/profile/${value}`)
     }
+    if(value == 'info' ){
+      axios.get('https://shope-b3.thaihm.site/api/auth/get-loged-in-user', {
+        headers: {
+          Authorization: `Bearer ${token}`
+      }
+      }).then(value=>{
+        console.log(value);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    }
   }
 
 
@@ -45,12 +57,29 @@ function Profile() {
     if( newpass !== newpasscf){
       return message.error('mật khẩu không khớp')
     }
-    axios.patch('https://shope-b3.thaihm.site/api/user/change-password' ,{oldPass: oldpass , newPass:newpass}, {
-      headers: {
-        Authorization: `Bearer ${token}`
-    }
-    }).then(value=>{
+  
+    var data = JSON.stringify({
+      "oldPass": oldpass,
+      "newPass": newpass
+    });
+    
+    var config = {
+      method: 'patch',
+      url: 'https://shope-b3.thaihm.site/api/user/change-password',
+      headers: { 
+        'Authorization': token, 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(value=>{
       message.success('Đổi mật khẩu thành công')
+      window.localStorage.removeItem('username')
+      window.localStorage.removeItem('token')
+      window.localStorage.removeItem('oderData')
+      window.location.assign('/home')
     })
     .catch(err=>{
       message.error('Đang chờ server ...')

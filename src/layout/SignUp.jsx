@@ -35,18 +35,24 @@ function SignUp() {
     const nav = useNavigate()
 
     const onFinish = (values) => {
-        Axios.post('https://shope-b3.thaihm.site/api/auth/sign-up',
-        {
-            email: values.email,
-            password: values.password,
+        if(values.password.length >= 5 &&  values.password.split('').filter(value=> value == ' ' ).length == 0){
+            Axios.post('https://shope-b3.thaihm.site/api/auth/sign-up',
+            {
+                email: values.email,
+                password: values.password,
+            }
+            ).then(function (value) {
+                window.localStorage.setItem('token', value.data.token)
+                window.localStorage.setItem('username', values.email)
+                message.success('Đăng Ký Thành Công')
+                window.location.assign('/signin')
+            })
+            .catch(value=>{
+                message.error('dang cho server...')
+            })
+        }else{
+            message.error('sai dinh dang mat khau')
         }
-        ).then(function (value) {
-            window.localStorage.setItem('token', value.data.token)
-            window.localStorage.setItem('username', values.email)
-
-            message.success('Đăng Nhập Thành Công')
-            window.location.assign('/signin')
-        })
     };
 
 

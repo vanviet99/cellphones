@@ -2,10 +2,11 @@ import './Header.css'
 import { Button, Modal, Form, Input, message } from 'antd';
 import { Link } from "react-router-dom";
 import { PhoneOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {debounce} from 'debounce'
 
 function Header() {
     window.localStorage.setItem('amountdrop', 0)
@@ -34,22 +35,26 @@ function Header() {
     }, [])
 
     const onFinish = (values) => {
-        Axios.post('https://shope-b3.thaihm.site/api/auth/sign-in',
-            {
-                email: values.email,
-                password: values.password,
-            }
-        ).then(function (value) {
-            window.localStorage.setItem('token', value.data.token)
-            window.localStorage.setItem('username', values.email)
-
-            message.success('Đăng Nhập Thành Công')
-            window.location.assign('/home')
-
-        }).catch(function (value) {
-            message.error('Đăng Nhập Thất Bại')
-
-        })
+        if(values.password.length >= 5 &&  values.password.split('').filter(value=> value === ' ' ).length == 0){
+            Axios.post('https://shope-b3.thaihm.site/api/auth/sign-in',
+                {
+                    email: values.email,
+                    password: values.password,
+                }
+            ).then(function (value) {
+                window.localStorage.setItem('token', value.data.token)
+                window.localStorage.setItem('username', values.email)
+    
+                message.success('Đăng Nhập Thành Công')
+                window.location.assign('/home')
+    
+            }).catch(function (value) {
+                message.error('Đăng Nhập Thất Bại')
+    
+            })
+        }else{
+            alert('sai dinh dang mat khau')
+        }
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -79,19 +84,26 @@ function Header() {
         }
     }, [dataSearch])
 
+    
+    const debounceFun =(value)=>{
+        Axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${value}`)
+        .then(value => {
+            document.querySelector('.fadeheader').classList.add('showfade')
+            setDataSearch(value.data.products)
+        })
+        .catch(value => {
+            console.log(value);
+        })
+    }
+
+    const debounceDropDown = useCallback(debounce((nextValue) => debounceFun(nextValue), 500), [])
+
     const handleSearch = (e) => {
-        setTimeout(() => {
+        //    setTimeout(() => {
             if (e.target.value !== '' && e.target.value.length >= 2) {
-                Axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${e.target.value}`)
-                    .then(value => {
-                        document.querySelector('.fadeheader').classList.add('showfade')
-                        setDataSearch(value.data.products)
-                    })
-                    .catch(value => {
-                        console.log(value);
-                    })
+                debounceDropDown(e.target.value)
             }
-        }, 500);
+        // }, 500);
     }
 
 
@@ -100,7 +112,6 @@ function Header() {
         a++
         window.localStorage.setItem('amountdrop', a)
         setAmountdrop(a)
-        console.log(amounrdrop);
         if (amounrdrop % 2 !== 0) {
             document.querySelector('.Header__login__dropdown').classList.remove('showdrop')
         }
@@ -188,7 +199,7 @@ function Header() {
                     <div className='search__input' >
                         <input className='input_1' type="text" onChange={handleSearch} placeholder='Bạn cần tìm gì ?' />
                         <div className="search__input__search">
-                            {dataSearch.length > 0 ? dataSearch.map((value, index) => {
+                            { dataSearch.length > 0 ? dataSearch.map((value, index) => {
                                 if (index < 5) {
                                     return (
                                         <div key={index}>
@@ -206,7 +217,7 @@ function Header() {
                                         </div>
                                     )
                                 }
-                            }) : null}
+                            }) :  null}
                         </div>
                     </div>
                 </p>
