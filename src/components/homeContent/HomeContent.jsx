@@ -1,13 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { removeloading } from '../../redux-toolkit/loading'
 import './HomeContent.css'
 import HomeContentSlider from './HomeContentSlider'
 
 function HomeContent() {
+
+    
     let token = window.localStorage.getItem('token')
     const [showmore, setShowmore] = useState(10)
-
+    const dispatch  =useDispatch()
     const [dataProduct, setDataProduct] = useState([])
     const [categories, setCategories] = useState([])
     useEffect(() => {
@@ -16,6 +20,7 @@ function HomeContent() {
                 Authorization: `Bearer ${token}`
             }
         }).then(value => {
+            console.log(123123);
             setCategories(value.data.categories)
         }).catch(err => {
             console.log(err);
@@ -28,6 +33,7 @@ function HomeContent() {
                 Authorization: `Bearer ${token}`
             }
         }).then(value => {
+            dispatch(removeloading(false))
             setDataProduct(value.data.products)
         })
             .catch(value => {
@@ -38,7 +44,7 @@ function HomeContent() {
         setShowmore(count => count + 10)
     }
     return (
-        <div className="home__content__block">
+            <div className="home__content__block">
             <HomeContentSlider></HomeContentSlider>
             <div className="home__content__list2">
             <div className="home__content__list2__category">
@@ -80,7 +86,6 @@ function HomeContent() {
                 <div className='home__content__list2__morebtns'><button onClick={handleShowMore} className='home__content__list2__morebtn'>Xem Thêm</button></div>
             </div>
         </div>
-
     )
 }
 

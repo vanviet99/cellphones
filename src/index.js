@@ -2,22 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import './App.css';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit'
 import { amountReducer } from './redux-toolkit/indexSlice';
+import { loadingReducer } from './redux-toolkit/loading';
+
 
 
 const store = configureStore({
   reducer:{
-    amountCart: amountReducer
+    amountCart: amountReducer,
+    loading: loadingReducer
   }
 })
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App/> 
     </Provider>
   </React.StrictMode>
 );
