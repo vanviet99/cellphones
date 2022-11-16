@@ -52,7 +52,7 @@ function SignIn() {
         })
     };
     return (
-        <div>  <Header></Header>
+        <div>  
 
 
             <div className='signup'>
@@ -60,7 +60,7 @@ function SignIn() {
                 <div className='img__up'>
                     <img style={{ width: "300px" }} src="https://cellphones.com.vn/smember/_nuxt/img/Shipper_CPS3.0251fdd.png" alt="" />
                 </div>
-                <div class="login-form__title">BẮT ĐẦU MUA HÀNG VỚI CELLPHONES</div>
+                <h1 class="login-form__title">BẮT ĐẦU MUA HÀNG VỚI CELLPHONES</h1>
 
 
 
