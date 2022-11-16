@@ -17,20 +17,22 @@ function GetAllProduct() {
 
 
   const getdataFilter  =(value)=>{
+    
+    // setTimeout(function(){  document.getElementById(`${value}`).classList.add('active__option') },300)
     if(value == 'caothap'){
       return  setDataFilter(dataProduct.sort(function(a,b){return a.price - b.price}))
     }
     if(value == 'thapcao'){
       return  setDataFilter(dataProduct.sort(function(a,b){return b.price - a.price}))
     }
-    if(value == 'all'){
-      return setDataFilter(dataProduct)
-    }
+    // if(value == 'all'){
+    //   return setDataFilter(dataProduct)
+    // }
     axios.get(`https://shope-b3.thaihm.site/api/product/find-products-by-name?productName=${value}`)
     .then(value=>{
       setDataFilter(value.data.products)
     })
-    .then(value=>{
+    .catch(value=>{
       console.log(value);
     })
   }
@@ -46,8 +48,10 @@ function GetAllProduct() {
       .catch(value => {
         console.log(value);
       })
-      getdataFilter(dataparam)
+      getdataFilter(dataparam.get('filter'))
   }, [])
+
+
   let brand = []
   brand = dataProduct.map(value => {
     return value.brand
@@ -57,7 +61,9 @@ function GetAllProduct() {
 
   
   const handleFilter =(value)=>{
-    document.querySelector('.active__option').classList.remove('active__option')
+    if(document.querySelector('.active__option')){
+      document.querySelector('.active__option').classList.remove('active__option')
+    }
     document.getElementById(`${value}`).classList.add('active__option')
     setDataparam({filter: value})
     getdataFilter(value)
@@ -89,7 +95,7 @@ function GetAllProduct() {
           <h2>Sắp xếp theo</h2>
           <button className='123' id='caothap' onClick={function(){handleFilter('caothap')}}><i class="fa-solid fa-arrow-down-wide-short"></i><p>Giá cao - thấp</p></button>
           <button className='123' id='thapcao'  onClick={function(){handleFilter('thapcao')}}> <i class="fa-solid fa-arrow-down-short-wide"></i><p>Giá thấp - cao</p></button>
-          <button className='123 active__option' id='all'  onClick={function(){handleFilter('all')}}> <i class="fa-solid fa-eye"></i><p>Xem nhiều</p></button>
+          {/* <button className='123 active__option' id='all'  onClick={function(){handleFilter('all')}}> <i class="fa-solid fa-eye"></i><p>Xem nhiều</p></button> */}
 
         </div>
         <div className="home__content__list2__cart">
