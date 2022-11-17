@@ -236,7 +236,11 @@ function Header() {
 
 
                 <p className='Header__cart' onClick={function () {
-                    nav('/card')
+                    if(token){
+                        nav('/card')
+                    }else{
+                        message.success('dang nhap tai khoan')
+                    }
                 }}>
                     <div class=" position-relative">
                         <div className='cart__content' ><i class="fa-solid fa-cart-shopping"></i> </div>

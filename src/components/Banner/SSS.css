@@ -244,3 +244,7 @@ p{
   .anhbiet::-webkit-scrollbar {
     display: none;
   }
+
+  .logo__banner{
+    display: none;
+  }
