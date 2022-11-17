@@ -99,28 +99,10 @@ function GetAllProduct() {
 
         </div>
         <div className="home__content__list2__cart">
-          {dataFilter.length == 0 ?  dataProduct.map(value => {
+          { (dataFilter.length >  0 ? dataFilter : dataProduct).map(value => {
             let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
             return (
              <div key={value._id}>
-               <Link to={`/ProductDetail/${value._id}`}>
-                <div  className="home__content__list__cart">
-                  <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
-                  <h3>{value.productName}</h3>
-                  <p className='home__content__list__cart__price'>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
-                  <div className="home__content__list__cart__sale">
-                    Nhập mã CPSONL500 khi thanh toán VNPAY qua website hoặc CPS500 qua QR Offline tại cửa hàng để giảm thêm 500k khi mua sản phẩm Apple từ 17 triệu và
-                  </div>
-                  <div className='home__content__list__cart__star'> <i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i></div>
-                  <div className='home__content__list__cart__Fav'><p>Yêu thích </p><i className="fa-regular fa-heart"></i></div>
-                </div>
-              </Link>
-             </div>
-            )
-          }) : dataFilter.map(value => {
-            let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
-            return (
-             <div key={value._id} >
                <Link to={`/ProductDetail/${value._id}`}>
                 <div  className="home__content__list__cart">
                   <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
