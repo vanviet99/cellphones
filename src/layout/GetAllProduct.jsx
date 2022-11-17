@@ -4,6 +4,8 @@ import './GetAllProduct.css'
 import { Link, useSearchParams } from 'react-router-dom'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
+import LazyLoad from 'react-lazy-load';
+
 import HomeContentSlider__1 from '../components/ProductDetail/HomeContentSlider__1'
 
 
@@ -102,7 +104,8 @@ function GetAllProduct() {
           { (dataFilter.length >  0 ? dataFilter : dataProduct).map(value => {
             let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
             return (
-             <div key={value._id}>
+             <LazyLoad >
+              <div key={value._id}>
                <Link to={`/ProductDetail/${value._id}`}>
                 <div  className="home__content__list__cart">
                   <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
@@ -116,6 +119,7 @@ function GetAllProduct() {
                 </div>
               </Link>
              </div>
+             </LazyLoad>
             )
           })}
         </div>
