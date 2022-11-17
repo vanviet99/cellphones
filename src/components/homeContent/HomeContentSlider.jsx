@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './HomeContent.css'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazy-load'
 
 
 
@@ -52,7 +53,8 @@ function HomeContentSlider() {
         }
     }, [])
     return (
-        <div>
+       <LazyLoad>
+         <div>
             <div className='home__content'> 
                 <div className='home__content__list' >
                     <div className="home__content__list__top">
@@ -101,6 +103,7 @@ function HomeContentSlider() {
 
             </div>
         </div>
+       </LazyLoad>
     )
 }
 
