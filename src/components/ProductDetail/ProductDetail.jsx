@@ -4,7 +4,7 @@ import { PhoneOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import HomeContentSlider__1 from './HomeContentSlider__1';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { pushAmount } from '../../redux-toolkit/indexSlice';
 import { message } from 'antd';
@@ -18,26 +18,26 @@ function ProductDetail() {
 
     const dispatch = useDispatch()
     function pushData() {
-        if (idOnDetail.length > 0) {
+        if(idOnDetail.length > 0){
             data.amountOrder = 1
-            let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
-            if (cloneOder) {
-                if (!cloneOder.find(value => value._id == data._id)) {
-                    dispatch(pushAmount(1))
-                    let newCloneOder = [...cloneOder, data]
-                    localStorage.setItem('oderData', JSON.stringify(newCloneOder));
-                    message.success('da them san pham')
-                } else { message.success('da them san pham trc do') }
-            } else {
+        let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
+        if (cloneOder) {
+            if (!cloneOder.find(value => value._id == data._id)) {
                 dispatch(pushAmount(1))
-
-                localStorage.setItem('oderData', JSON.stringify([data]))
+                let newCloneOder = [...cloneOder, data]
+                localStorage.setItem('oderData', JSON.stringify(newCloneOder));
                 message.success('da them san pham')
-            }
+            } else { message.success('da them san pham trc do') }
         } else {
+            dispatch(pushAmount(1))
+
+            localStorage.setItem('oderData', JSON.stringify([data]))
+            message.success('da them san pham')
+        }
+        } else{
             message.error('vui long chon san pham')
         }
-
+        
 
     }
     useEffect(function () {
@@ -53,12 +53,11 @@ function ProductDetail() {
     }, [])
     let img = `https://shope-b3.thaihm.site/${data.thumbnail}`
 
-    const handleChoose = (id) => {
+    const handleChoose=(id)=>{
         setIdOnDetail([id])
         console.log(id);
     }
     return (
-
         <div style={{ margin: '30px' }}>
             <div id='title'>
                 <h2>{data.productName}</h2>
@@ -111,9 +110,9 @@ function ProductDetail() {
                             <div className="detail-box2-item2">
 
                                 <ul className='flex'>
-                                    {dataDt.map(value => {
+                                    { dataDt.map(value => {
                                         return (
-                                            <li onClick={() => handleChoose(value._id)} key={value._id} className={`detail__product ${idOnDetail == value._id ? 'detailchoosed' : ''}`}>
+                                            <li onClick={()=>handleChoose(value._id)} key={value._id} className={`detail__product ${idOnDetail == value._id ? 'detailchoosed': ''}`}>
                                                 <b>{value.rom}</b>
                                                 <b>--{value.ram}</b>
                                                 <p>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
