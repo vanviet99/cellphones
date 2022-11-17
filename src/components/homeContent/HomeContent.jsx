@@ -6,6 +6,7 @@ import { removeloading } from '../../redux-toolkit/loading'
 import './HomeContent.css'
 import HomeContentSlider from './HomeContentSlider'
 
+
 function HomeContent() {
 
     
