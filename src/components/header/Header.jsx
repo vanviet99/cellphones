@@ -210,7 +210,7 @@ function Header() {
                                                     </div>
                                                     <div className="search__input__search__card__info">
                                                         <h3>{value.productName}</h3>
-                                                        <h4>{value.price}</h4>
+                                                        <h4>{value.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</h4>
                                                     </div>
                                                 </div>
                                             </a>
