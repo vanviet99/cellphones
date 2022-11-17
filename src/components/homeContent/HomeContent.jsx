@@ -47,6 +47,7 @@ function HomeContent() {
     }
     return (
             <div className="home__content__block">
+                <h1 className='logo__banner animate-charcter'>Cellphones</h1>
             <HomeContentSlider></HomeContentSlider>
             <div className="home__content__list2">
             <div className="home__content__list2__category">

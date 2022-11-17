@@ -36,10 +36,18 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .logo__banner{
+    font-size: 38px;
+    display: block !important;
+  }
   .nav-menu{
     overflow: hidden;
   }
+  .component__banner{
+    padding-top: 0px !important;
+  }
   .slider{
+    display: none !important;
     margin: 0 !important;
     transform: translateX(-15px);
   }
@@ -103,4 +111,13 @@
 
 .is-visible {
   opacity: 1;
+}
+.nav-menu-list{
+  padding: 0 12px !important;
+}
+.home__content__list__cart__sale {
+  padding: 7px !important;
+}
+.input_1{
+  outline:  none;
 }

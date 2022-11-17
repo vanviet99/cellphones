@@ -26,6 +26,7 @@ function Home() {
   return (
     <div className='App'>
       <Header></Header>
+      
       <div className="component__banner"><Banner></Banner></div>
      <div className="components__homecontent"> {  <HomeContent></HomeContent>}</div>
      <div className="components_footer"> <Footer></Footer></div>
