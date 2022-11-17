@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       dispatch(removeloading(false))
-    }, 2000);
+    }, 1800);
     
   })
 

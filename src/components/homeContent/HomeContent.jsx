@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeloading } from '../../redux-toolkit/loading'
 import './HomeContent.css'
+import LazyLoad from 'react-lazy-load';
 import HomeContentSlider from './HomeContentSlider'
 
 
@@ -51,10 +52,12 @@ function HomeContent() {
             <div className="home__content__list2__category">
                     {categories.map(value => {
                         return (
-                            <div className="home__content__list2__category__item">
+                            <LazyLoad>
+                                <div className="home__content__list2__category__item">
                                 <p>{value.categoryName}</p>
                                 <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" />
                             </div>
+                            </LazyLoad>
                         )
                     })}
 
@@ -69,7 +72,8 @@ function HomeContent() {
                     {dataProduct.filter((value, index) => index < showmore).map(value => {
                         let img = `https://shope-b3.thaihm.site/${value.thumbnail}`
                         return (
-                            <a href={`/ProductDetail/${value._id}`}>
+                           <LazyLoad  >
+                             <a href={`/ProductDetail/${value._id}`}>
                                 <div key={value._id} className="home__content__list__cart test2">
                                     <div className="home__content__list__cart__img"><img src={img} alt="" /></div>
                                     <h3>{value.productName}</h3>
@@ -81,6 +85,7 @@ function HomeContent() {
                                     <div className='home__content__list__cart__Fav'><p>Yêu thích </p><i className="fa-regular fa-heart"></i></div>
                                 </div>
                             </a>
+                           </LazyLoad>
                         )
                     })}
                 </div>
