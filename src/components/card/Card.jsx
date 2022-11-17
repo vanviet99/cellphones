@@ -6,6 +6,7 @@ import { LeftOutlined, CloseOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css';
 import { useDispatch } from 'react-redux';
 import { removeAmount } from '../../redux-toolkit/indexSlice';
+import LazyLoad from 'react-lazy-load';
 
 function Card() {
     const dispatch  = useDispatch()
@@ -64,7 +65,8 @@ function Card() {
     }
 
     return (
-        <div>
+       <LazyLoad>
+         <div>
             <div className='Cart__content'>
                 {data.length >0 ?
                     <div className='Cart__content__lists'>
@@ -73,7 +75,8 @@ function Card() {
                         </div>
                         {data.map((value, index) => {
                             return (
-                                <div className='Cart__content__list' key={value._id}>
+                              
+                                 <div className='Cart__content__list' key={value._id}>
                                     <div className='Cart__content__list__img'> <img src={`https://shope-b3.thaihm.site/${value.thumbnail}`} alt="" /></div>
                                     <div className='Cart__content__list__detail'>
                                         <h3>{value.productName} <button className='btndeleteCard' onClick={function(){handleDelete(index)}}><i ><CloseOutlined /></i></button></h3>
@@ -96,6 +99,7 @@ function Card() {
                                         </div>
                                     </div>
                                 </div>
+                              
                             )
                         })}
 
@@ -113,6 +117,7 @@ function Card() {
                     : <Empty />}
             </div>
         </div>
+       </LazyLoad>
     )
 }
 
