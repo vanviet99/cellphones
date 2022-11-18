@@ -49,7 +49,8 @@ function Header() {
                 window.location.assign('/home')
     
             }).catch(function (value) {
-                message.error('Đăng Nhập Thất Bại')
+                alert('Đăng Nhập Thất Bại')
+                message.error('Đăng Nhập Thất Bại')   
     
             })
         }else{
