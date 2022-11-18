@@ -53,7 +53,8 @@ function HomeContentSlider() {
         }
     }, [])
     return (
-       <LazyLoad>
+       <div>
+        {dataProduct.length > 0 ? <LazyLoad>
          <div>
             <div className='home__content'> 
                 <div className='home__content__list' >
@@ -103,7 +104,8 @@ function HomeContentSlider() {
 
             </div>
         </div>
-       </LazyLoad>
+       </LazyLoad> :  <div className='load1132'>  <img src='https://www.nodemy.vn/images/1.svg'></img></div>}
+       </div>
     )
 }
 
