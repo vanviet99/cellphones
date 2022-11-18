@@ -93,7 +93,7 @@ function HomeContent() {
                     </div>
                     <div className='home__content__list2__morebtns'><button onClick={handleShowMore} className='home__content__list2__morebtn'>Xem Thêm</button></div>
                 </div>
-            </div> : <img src='https://www.nodemy.vn/images/1.svg'></img>}
+            </div> : <div className='load1132'>  <img src='https://www.nodemy.vn/images/1.svg'></img></div>}
         </div>
 
 
