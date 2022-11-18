@@ -4,12 +4,13 @@ import { PhoneOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import HomeContentSlider__1 from './HomeContentSlider__1';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { pushAmount } from '../../redux-toolkit/indexSlice';
 import { message } from 'antd';
-function ProductDetail() {
 
+function ProductDetail() {
+    const nav = useNavigate()
     let idDetail = useParams().nameProductDetail
     const [data, setData] = useState([])
     const [dataDt, setDataDt] = useState([])
@@ -17,27 +18,54 @@ function ProductDetail() {
 
 
     const dispatch = useDispatch()
-    function pushData() {
-        if(idOnDetail.length > 0){
-            data.amountOrder = 1
-        let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
-        if (cloneOder) {
-            if (!cloneOder.find(value => value._id == data._id)) {
-                dispatch(pushAmount(1))
-                let newCloneOder = [...cloneOder, data]
-                localStorage.setItem('oderData', JSON.stringify(newCloneOder));
-                message.success('da them san pham')
-            } else { message.success('da them san pham trc do') }
-        } else {
-            dispatch(pushAmount(1))
 
-            localStorage.setItem('oderData', JSON.stringify([data]))
-            message.success('da them san pham')
-        }
-        } else{
+    const buynow = () => {
+        if (idOnDetail.length > 0) {
+            data.amountOrder = 1
+            let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
+            if (cloneOder) {
+                if (!cloneOder.find(value => value._id == data._id)) {
+                    dispatch(pushAmount(1))
+                    let newCloneOder = [...cloneOder, data]
+                    localStorage.setItem('oderData', JSON.stringify(newCloneOder));
+                    message.success('da them san pham')
+                    nav('/card')
+
+                } else {
+                     message.success('da them san pham trc do')
+                      nav('/card') }
+            } else {
+                dispatch(pushAmount(1))
+                localStorage.setItem('oderData', JSON.stringify([data]))
+                nav('/card')
+                message.success('da them san pham')
+            }
+        } else {
             message.error('vui long chon san pham')
         }
-        
+
+    }
+    function pushData() {
+        if (idOnDetail.length > 0) {
+            data.amountOrder = 1
+            let cloneOder = JSON.parse(window.localStorage.getItem('oderData'))
+            if (cloneOder) {
+                if (!cloneOder.find(value => value._id == data._id)) {
+                    dispatch(pushAmount(1))
+                    let newCloneOder = [...cloneOder, data]
+                    localStorage.setItem('oderData', JSON.stringify(newCloneOder));
+                    message.success('da them san pham')
+                } else { message.success('da them san pham trc do') }
+            } else {
+                dispatch(pushAmount(1))
+
+                localStorage.setItem('oderData', JSON.stringify([data]))
+                message.success('da them san pham')
+            }
+        } else {
+            message.error('vui long chon san pham')
+        }
+
 
     }
     useEffect(function () {
@@ -53,7 +81,7 @@ function ProductDetail() {
     }, [])
     let img = `https://shope-b3.thaihm.site/${data.thumbnail}`
 
-    const handleChoose=(id)=>{
+    const handleChoose = (id) => {
         setIdOnDetail([id])
         console.log(id);
     }
@@ -110,9 +138,9 @@ function ProductDetail() {
                             <div className="detail-box2-item2">
 
                                 <ul className='flex'>
-                                    { dataDt.map(value => {
+                                    {dataDt.map(value => {
                                         return (
-                                            <li onClick={()=>handleChoose(value._id)} key={value._id} className={`detail__product ${idOnDetail == value._id ? 'detailchoosed': ''}`}>
+                                            <li onClick={() => handleChoose(value._id)} key={value._id} className={`detail__product ${idOnDetail == value._id ? 'detailchoosed' : ''}`}>
                                                 <b>{value.rom}</b>
                                                 <b>--{value.ram}</b>
                                                 <p>{(value.price * 1).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
@@ -148,7 +176,7 @@ function ProductDetail() {
                     </div>
                     <div className='detail-box2-item4'>
                         <div className='detail-box2-item4-ant1'>
-                            <button className='detail-box2-item4-ant1-button1'> <h5 style={{ color: 'white' }}>mua ngay</h5>(giao tận nơi hoặc lấy tại cửa hàng)</button>
+                            <button className='detail-box2-item4-ant1-button1' onClick={buynow}> <h5 style={{ color: 'white' }}>mua ngay</h5>(giao tận nơi hoặc lấy tại cửa hàng)</button>
                             <button className='detail-box2-item4-ant1-button2' onClick={pushData}>
                                 <img src="https://static-product.cellphones.com.vn/img/add-to-cart.97145ab.png" alt="" />
                                 <br />

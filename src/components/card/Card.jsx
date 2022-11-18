@@ -114,7 +114,7 @@ function Card() {
                             </div>
                         </div>
                     </div>
-                    : <Empty />}
+                    : <div> <Empty /> <Link to={'/home'}> <p className='Cart__content__list__buy__btn2 noempty'>Chọn thêm sản phẩm khác</p></Link></div>}
             </div>
         </div>
        </LazyLoad>
