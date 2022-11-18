@@ -37,7 +37,7 @@
 }
 @media screen and (max-width: 768px) {
   .logo__banner{
-    font-size: 38px;
+    font-size: 38px !important;
     display: block !important;
   }
   .nav-menu{
@@ -120,4 +120,8 @@
 }
 .input_1{
   outline:  none;
+}
+.noempty{
+  padding: 4px 8px !important;
+  margin-top: 100px;
 }
