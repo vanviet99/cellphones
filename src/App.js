@@ -22,9 +22,19 @@ function App() {
   const dispatch = useDispatch()
   const token = window.localStorage.getItem('token =')
   useEffect(() => {
-    setTimeout(() => {
+    axios.get('https://shope-b3.thaihm.site/api/product/get-all-products', {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }).then(value => {
+      setTimeout(() => {
       dispatch(removeloading(false))
-    }, 1800);
+    }, 1000);
+  })
+      .catch(value => {
+          console.log(value);
+      })
+   
     
   })
 
